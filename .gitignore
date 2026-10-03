@@ -13,3 +13,6 @@ wp-content/cache/
 ehthumbs.db
 Thumbs.db
 ._*
+
+# Misc
+*.sql
