@@ -1,0 +1,26 @@
+{
+	"$schema": "https://getcomposer.org/schema.json",
+	"name": "ucf-bands/theme",
+	"description": "UCF Bands WordPress theme",
+	"authors": [
+		{
+			"name": "Jordan Pakrosnis",
+			"email": "jpak@jordanpak.com"
+		}
+	],
+	"autoload": {
+		"psr-4": { "UCF\\Theme\\": "./inc" }
+	},
+	"config": {
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true
+		}
+	},
+	"require-dev": {
+		"wp-coding-standards/wpcs": "^3.0"
+	},
+	"scripts": {
+		"phpcs": "phpcs -ps ./",
+		"phpcs:installed": "phpcs -i"
+	}
+}
