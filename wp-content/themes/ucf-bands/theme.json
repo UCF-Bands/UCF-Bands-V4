@@ -36,6 +36,30 @@
 					]
 				},
 				{
+					"fontFamily": "\"Montserrat\", sans-serif",
+					"name": "Montserrat",
+					"slug": "body-alt",
+					"fontFace": [
+						{
+							"fontFamily": "Montserrat",
+							"fontWeight": "600",
+							"src": [ "file:./src/fonts/montserrat-bold.ttf" ]
+						}
+					]
+				},
+				{
+					"fontFamily": "\"League Gothic\", sans-serif",
+					"name": "League Gothic",
+					"slug": "display",
+					"fontFace": [
+						{
+							"fontFamily": "League Gothic",
+							"fontWeight": "400",
+							"src": [ "file:./src/fonts/leaguegothic-regular.ttf" ]
+						}
+					]
+				},
+				{
 					"fontFamily": "\"Droid Serif\", serif",
 					"name": "Droid Serif",
 					"slug": "serif",
@@ -57,9 +81,14 @@
 			],
 			"fontSizes": [
 				{
-					"name": "Temp",
-					"slug": "temp",
-					"size": "14px"
+					"name": "Base",
+					"slug": "base",
+					"size": "1.125rem"
+				},
+				{
+					"name": "Jumbo",
+					"slug": "jumbo",
+					"size": "7.875rem"
 				}
 			]
 		},
@@ -83,7 +112,27 @@
 	"styles": {
 		"typography": {
 			"fontFamily": "var:preset|font-family|body",
+			"lineHeight": "1.6",
+			"fontSize": "var:preset|font-size|base",
 			"fontWeight": "400"
+		},
+		"elements": {
+			"heading": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|body-alt",
+					"fontWeight": "600",
+					"lineHeight": "1.2"
+				}
+			},
+			"h1": {
+				"typography": {
+					"fontFamily": "var:preset|font-family|display",
+					"lineHeight": "0.875",
+					"fontSize": "var:preset|font-size|jumbo",
+					"fontWeight": "400",
+					"textTransform": "uppercase"
+				}
+			}
 		}
 	}
 }
