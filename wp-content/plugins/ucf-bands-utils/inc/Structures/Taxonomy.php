@@ -182,12 +182,12 @@ abstract class Taxonomy {
 
 			// Add "and " to the last term and separate with commas/spaces.
 		} elseif ( count( $terms ) > 2 ) {
-			$terms[ count( $terms ) - 1 ] = __( 'and', 'metro' ) . ' ' . $terms[ count( $terms ) - 1 ];
+			$terms[ count( $terms ) - 1 ] = __( 'and', 'ucf' ) . ' ' . $terms[ count( $terms ) - 1 ];
 			return implode( ', ', $terms );
 
 			// Just two: put "and" between them.
 		} else {
-			return implode( ' ' . __( 'and', 'metro' ) . ' ', $terms );
+			return implode( ' ' . __( 'and', 'ucf' ) . ' ', $terms );
 		}
 	}
 }
