@@ -2,7 +2,7 @@
 /**
  * Main theme handler
  *
- * @since 4.0.0
+ * @since   4.0.0
  * @package UCF\Theme
  */
 
