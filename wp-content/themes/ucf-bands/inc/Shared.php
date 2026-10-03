@@ -34,7 +34,9 @@ class Shared {
 	 * @since 4.0.0
 	 */
 	public function __construct() {
-		add_action( 'after_setup_theme', [ $this, 'add_editor_styles' ] );
+		// We may not need this.
+		// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
+		// add_action( 'after_setup_theme', [ $this, 'add_editor_styles' ] );.
 		$this->add_enqueue_hook();
 	}
 
