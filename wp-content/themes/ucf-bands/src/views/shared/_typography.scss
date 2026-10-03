@@ -1,0 +1,58 @@
+/**
+ * Global typography
+ */
+
+@use "sass:list";
+@use "sass:math";
+@use "../../utils/fluid-typography" as fluid;
+
+$base-font-size: 16px;
+
+$font-sizes: (
+	11px,
+	12px,
+	13px,
+	14px,
+	15px,
+	16px,
+	18px,
+	20px,
+	24px,	      // FSE
+	26px	16px, // ??? FSE, cover "featured" paragraph + large pullquote
+	28px	20px, // V3 h4
+	32px	24px, // FSE, V3 h3
+	34px,	      // FSE
+	36px,	      // V3 entry title, large mobile
+	38px,	      // FSE
+	45px,	      // FSE
+	46px	36px, // V3 large
+	48px,	      // V3 xlarge mobile
+	52px,	      // FSE
+	56px,	      // FSE
+	58px,	      // FSE
+	62px	48px, // V3 xlarge
+	78px	48px, // V3 xxlarge
+	94px	48px, // V3 xxxlarge
+	126px,
+);
+
+$line-heights: (
+
+);
+
+:root {
+
+	@each $size, $starting-size in $font-sizes {
+		// Get size without unit.
+		$size-clean: math.div($size, ($size * 0 + 1));
+
+		// "Static" size.
+		--ucf--font-size--#{"" + $size-clean}: #{math.div($size, $base-font-size)}rem;
+
+		// Fluid size.
+		@if $starting-size {
+			$fluid: fluid.fluid($starting-size, $size);
+			--ucf--font-size--#{"" + $size-clean}--fluid: #{$fluid};
+		}
+	}
+}
