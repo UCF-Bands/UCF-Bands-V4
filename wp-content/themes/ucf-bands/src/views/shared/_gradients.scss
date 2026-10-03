@@ -1,0 +1,21 @@
+/**
+ * Global gradient tokens
+ */
+
+@use "sass:list";
+
+$gradients: (
+	lightest-gray:              linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(244, 244, 244) 100%),
+	light-gray:                 linear-gradient(90deg, rgb(244, 244, 244) 33.333%, rgb(217, 217, 217) 100%),
+	dark-gray:                  linear-gradient(90deg, rgb(31, 31, 31) 0%, rgb(21, 21, 21) 100%),
+	gold:                       linear-gradient(90deg, rgb(255, 201, 10) 0%, rgb(230, 159, 7) 100%),
+	dark-gray-overlay:          linear-gradient(135deg, rgba(21, 21, 21, 0.55) 25%, rgb(21, 21, 21) 100%),
+	dark-gray-overlay-to-right: linear-gradient(315deg, rgba(21, 21, 21, 0.55) 0%, rgb(21, 21, 21) 100%),
+);
+
+:root {
+
+	@each $name, $value in $gradients {
+		--ucf--gradient--#{"" + $name}: #{$value};
+	}
+}

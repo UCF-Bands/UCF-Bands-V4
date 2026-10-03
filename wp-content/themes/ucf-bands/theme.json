@@ -6,6 +6,7 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"custom": false,
+			"customGradient": false,
 			"palette": [
 				{
 					"name": "Gold",
@@ -28,7 +29,38 @@
 					"color": "var(--ucf--color--white)"
 				}
 			],
-			"gradients": [],
+			"gradients": [
+				{
+					"name": "White / Light Gray",
+					"slug": "lightest-gray",
+					"gradient": "var(--ucf--gradient--lightest-gray)"
+				},
+				{
+					"name": "Light Gray",
+					"slug": "light-gray",
+					"gradient": "var(--ucf--gradient--light-gray)"
+				},
+				{
+					"name": "Dark Gray",
+					"slug": "dark-gray",
+					"gradient": "var(--ucf--gradient--dark-gray)"
+				},
+				{
+					"name": "Gold",
+					"slug": "gold",
+					"gradient": "var(--ucf--gradient--gold)"
+				},
+				{
+					"name": "Dark Gray Overlay (For Images): Right",
+					"slug": "dark-gray-overlay",
+					"gradient": "var(--ucf--gradient--dark-gray-overlay)"
+				},
+				{
+					"name": "Dark Gray Overlay (For Images): Left",
+					"slug": "dark-gray-overlay-to-right",
+					"gradient": "var(--ucf--gradient--dark-gray-overlay-to-right)"
+				}
+			],
 			"link": true
 		},
 		"typography": {
