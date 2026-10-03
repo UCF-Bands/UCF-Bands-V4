@@ -6,7 +6,23 @@
 			"defaultPalette": false,
 			"defaultGradients": false,
 			"custom": false,
-			"palette": [],
+			"palette": [
+				{
+					"name": "Gold",
+					"slug": "gold",
+					"color": "var(--ucf--color--gold)"
+				},
+				{
+					"name": "Black",
+					"slug": "black",
+					"color": "var(--ucf--color--black)"
+				},
+				{
+					"name": "White",
+					"slug": "white",
+					"color": "var(--ucf--color--white)"
+				}
+			],
 			"gradients": [],
 			"link": true
 		},
@@ -114,6 +130,19 @@
 		"layout": {
 			"contentSize": "54.375rem",
 			"wideSize": "81.875rem"
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"blockGap": true,
+			"defaultSpacingSizes": false,
+			"spacingSizes": [
+				{
+					"name": "1 Unit",
+					"slug": "40",
+					"size": "2.125rem"
+				}
+			]
 		}
 	},
 	"styles": {
@@ -140,6 +169,9 @@
 					"textTransform": "uppercase"
 				}
 			}
+		},
+		"spacing": {
+			"blockGap": "2.125rem"
 		}
 	}
 }
