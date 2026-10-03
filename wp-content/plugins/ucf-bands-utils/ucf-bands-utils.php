@@ -12,6 +12,8 @@
  * @package UCF\Utils
  */
 
+declare( strict_types = 1 );
+
 namespace UCF\Utils;
 
 define( 'UCF_UTILS_DIR', plugin_dir_path( __FILE__ ) );

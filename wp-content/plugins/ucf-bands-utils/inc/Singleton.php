@@ -6,6 +6,8 @@
  * @package UCF\Utils
  */
 
+declare( strict_types = 1 );
+
 namespace UCF\Utils;
 
 /**
