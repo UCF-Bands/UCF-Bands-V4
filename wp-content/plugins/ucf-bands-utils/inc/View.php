@@ -158,7 +158,7 @@ trait View {
 	protected function add_enqueue_hook(): void {
 
 		add_action(
-			'wp_enqueue_scripts',
+			'enqueue_block_assets',
 			[ $this, 'enqueue_assets' ],
 			$this->get_enqueue_scripts_priority()
 		);
