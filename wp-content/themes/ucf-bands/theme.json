@@ -18,6 +18,11 @@
 					"color": "var(--ucf--color--black)"
 				},
 				{
+					"name": "Gray",
+					"slug": "gray",
+					"color": "var(--ucf--color--gray)"
+				},
+				{
 					"name": "White",
 					"slug": "white",
 					"color": "var(--ucf--color--white)"
