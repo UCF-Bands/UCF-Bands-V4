@@ -118,20 +118,6 @@
 			"textIndent": false,
 			"dropCap": false
 		},
-		"blocks": {
-			"core/heading": {
-				"typography": {
-					"fontFamilies": [],
-					"fontSizes": []
-				}
-			},
-			"core/paragraph": {
-				"typography": {
-					"fontFamilies": [],
-					"fontSizes": []
-				}
-			}
-		},
 		"layout": {
 			"contentSize": "54.375rem",
 			"wideSize": "81.875rem"
@@ -148,6 +134,20 @@
 					"size": "2.125rem"
 				}
 			]
+		},
+		"blocks": {
+			"core/heading": {
+				"typography": {
+					"fontFamilies": [],
+					"fontSizes": []
+				}
+			},
+			"core/paragraph": {
+				"typography": {
+					"fontFamilies": [],
+					"fontSizes": []
+				}
+			}
 		}
 	},
 	"styles": {
