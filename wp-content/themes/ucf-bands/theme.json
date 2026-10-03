@@ -90,17 +90,22 @@
 					"slug": "jumbo",
 					"size": "7.875rem"
 				}
-			]
+			],
+			"letterSpacing": false,
+			"textTransform": false,
+			"textDecoration": false
 		},
 		"blocks": {
 			"core/heading": {
 				"typography": {
-					"fontFamilies": []
+					"fontFamilies": [],
+					"fontSizes": []
 				}
 			},
 			"core/paragraph": {
 				"typography": {
-					"fontFamilies": []
+					"fontFamilies": [],
+					"fontSizes": []
 				}
 			}
 		},
