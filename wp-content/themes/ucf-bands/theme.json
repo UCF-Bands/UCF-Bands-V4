@@ -19,7 +19,21 @@
 				{
 					"fontFamily": "\"Open Sans\", sans-serif",
 					"name": "Open Sans",
-					"slug": "body"
+					"slug": "body",
+					"fontFace": [
+						{
+							"fontFamily": "Open Sans",
+							"fontStyle": "auto",
+							"fontWeight": "400 700",
+							"src": [ "file:./src/fonts/opensans-variable.ttf" ]
+						},
+						{
+							"fontFamily": "Open Sans",
+							"fontStyle": "italic",
+							"fontWeight": "400 700",
+							"src": [ "file:./src/fonts/opensans-italic-variable.ttf" ]
+						}
+					]
 				},
 				{
 					"fontFamily": "\"Droid Serif\", serif",
