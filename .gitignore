@@ -1,5 +1,6 @@
 # Site root
 wp-config.php
+nginx.conf
 
 # WP content
 wp-content/db.php
