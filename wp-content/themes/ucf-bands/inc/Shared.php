@@ -105,9 +105,10 @@ class Shared {
 	 */
 	protected function enqueue_extra_assets(): void {
 
+		// Squiz.PHP.CommentedOutCode.Found
 		// // Globally-available block styles.
-		// Blocks::enqueue_core_block_styles( 'heading' );
-		// Blocks::enqueue_core_block_styles( 'button' );
+		// Blocks::enqueue_core_block_styles( 'heading' );.
+		// Blocks::enqueue_core_block_styles( 'button' );.
 
 		// Enqueue backup FontAwesome kit if plugin isn't configured.
 		// init is too early for this check.
