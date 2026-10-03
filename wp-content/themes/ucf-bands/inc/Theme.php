@@ -21,11 +21,20 @@ class Theme {
 	use Singleton;
 
 	/**
+	 * Asset handle prefix
+	 *
+	 * @since 4.0.0
+	 * @var   string
+	 */
+	const HANDLE_PREFIX = 'ucf-theme-';
+
+	/**
 	 * Set things up
 	 *
 	 * @since 4.0.0
 	 */
 	public function __construct() {
 		Editor::get_instance();
+		Shared::get_instance();
 	}
 }
