@@ -93,7 +93,9 @@
 			],
 			"letterSpacing": false,
 			"textTransform": false,
-			"textDecoration": false
+			"textDecoration": false,
+			"textIndent": false,
+			"dropCap": false
 		},
 		"blocks": {
 			"core/heading": {
