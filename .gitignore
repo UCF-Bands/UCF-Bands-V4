@@ -5,9 +5,11 @@ nginx.conf
 # WP content
 wp-content/db.php
 wp-content/object-cache.php
+wp-content/advanced-cache.php
 wp-content/uploads/
 wp-content/upgrade/
 wp-content/cache/
+wp-content/w3tc-config/
 
 # OS generated files
 .DS_Store*
