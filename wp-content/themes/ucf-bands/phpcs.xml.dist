@@ -46,6 +46,9 @@
 	</rule>
 
 	<rule ref="WordPress">
+		<!-- allow having things to do, bro -->
+		<exclude name="Generic.Commenting.Todo.CommentFound" />
+
 		<!-- allow extremely basic array syntax -->
 		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
 
