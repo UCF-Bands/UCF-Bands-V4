@@ -25,5 +25,7 @@ class Theme {
 	 *
 	 * @since 4.0.0
 	 */
-	public function __construct() {}
+	public function __construct() {
+		Editor::get_instance();
+	}
 }
