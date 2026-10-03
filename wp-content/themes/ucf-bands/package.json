@@ -15,6 +15,7 @@
 		"url": "https://github.com/UCF-Bands/UCF-Bands-V4/issues",
 		"email": "jpak@jordanpak.com"
 	},
+	"type": "module",
 	"devDependencies": {
 		"@wordpress/scripts": "^36.0.0"
 	},
