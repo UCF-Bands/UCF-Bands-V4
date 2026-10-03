@@ -28,3 +28,6 @@ if ( file_exists( UCF_THEME_DIR . '/vendor/autoload.php' ) ) {
 } else {
 	autoload_register( __NAMESPACE__, UCF_THEME_DIR );
 }
+
+// Spin up theme.
+Theme::get_instance();
