@@ -27,5 +27,6 @@ class Plugin {
 	 */
 	public function __construct() {
 		Admin_Tag::get_instance();
+		Assets::get_instance();
 	}
 }
