@@ -1,7 +1,7 @@
 {
 	"$schema": "https://getcomposer.org/schema.json",
 	"name": "ucf-bands/utils",
-	"description": "UCF Bands Utilities",
+	"description": "UCF Bands WordPress utilities plugin",
 	"authors": [
 		{
 			"name": "Jordan Pakrosnis",
