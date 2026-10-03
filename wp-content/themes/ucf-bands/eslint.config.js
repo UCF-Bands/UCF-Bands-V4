@@ -1,4 +1,7 @@
 // eslint-disable-next-line import/no-extraneous-dependencies
 import wordpress from '@wordpress/eslint-plugin';
 
-export default [ ...wordpress.configs.recommended ];
+export default [
+	{ ignores: [ 'vendor/**' ] },
+	...wordpress.configs.recommended,
+];
