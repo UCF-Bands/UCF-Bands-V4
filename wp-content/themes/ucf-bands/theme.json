@@ -60,6 +60,10 @@
 					"fontFamilies": []
 				}
 			}
+		},
+		"layout": {
+			"contentSize": "54.375rem",
+			"wideSize": "81.875rem"
 		}
 	},
 	"styles": {
