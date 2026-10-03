@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<ruleset
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	name="UCF Bands Utils"
+	xsi:noNamespaceSchemaLocation="https://schema.phpcodesniffer.com/phpcs.xsd"
+>
+	<file>.</file>
+
+	<exclude-pattern>/vendor/*</exclude-pattern>
+
+	<arg name="basepath" value="."/>
+	<arg name="parallel" value="8"/>
+
+	<rule ref="WordPress-Extra"/>
+	<rule ref="WordPress-Docs"/>
+	<rule ref="Generic.Commenting.Todo"/>
+
+	<config name="minimum_wp_version" value="7.1.2"/>
+
+	<!-- Textdomain -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="ucf"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- Allow modern file naming -->
+	<rule ref="WordPress.Files.FileName">
+		<properties>
+			<property name="strict_class_file_names" value="false" />
+		</properties>
+		<exclude name="WordPress.Files.FileName.NotHyphenatedLowercase" />
+	</rule>
+
+	<!-- Global var prefixes -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="UCF"/>
+				<element value="ucf"/>
+			</property>
+		</properties>
+	</rule>
+
+	<rule ref="WordPress">
+		<!-- allow extremely basic array syntax -->
+		<exclude name="Universal.Arrays.DisallowShortArraySyntax.Found" />
+
+		<!-- allow completely readable ternaries -->
+		<exclude name="WordPress.PHP.DisallowShortTernary.Found" />
+		<exclude name="Universal.Operators.DisallowShortTernary.Found" />
+
+		<exclude name="WordPress.NamingConventions.PrefixAllGlobals.ShortPrefixPassed" />
+	</rule>
+
+</ruleset>
