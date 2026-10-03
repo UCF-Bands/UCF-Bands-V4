@@ -1,0 +1,15 @@
+# Site root
+wp-config.php
+
+# WP content
+wp-content/db.php
+wp-content/object-cache.php
+wp-content/uploads/
+wp-content/upgrade/
+wp-content/cache/
+
+# OS generated files
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+._*
