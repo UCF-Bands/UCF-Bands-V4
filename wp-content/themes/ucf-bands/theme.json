@@ -119,8 +119,8 @@
 			"dropCap": false
 		},
 		"layout": {
-			"contentSize": "54.375rem",
-			"wideSize": "81.875rem"
+			"contentSize": "var(--ucf--content-width--default)",
+			"wideSize": "var(--ucf--content-width--wide)"
 		},
 		"spacing": {
 			"margin": true,
