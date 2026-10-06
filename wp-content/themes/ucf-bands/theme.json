@@ -163,8 +163,7 @@
 			},
 			"core/paragraph": {
 				"typography": {
-					"fontFamilies": [],
-					"fontSizes": []
+					"fontFamilies": []
 				}
 			}
 		}
