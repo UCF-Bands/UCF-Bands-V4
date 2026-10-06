@@ -4,5 +4,5 @@
 		'wp-dom-ready',
 		'wp-rich-text'
 	),
-	'version' => '3bfd6baed593b1941bc3'
+	'version' => '33185dd88c18cb8bf821'
 );

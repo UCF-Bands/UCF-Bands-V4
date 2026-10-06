@@ -14,7 +14,7 @@ const getFormatType = ( format ) =>
 /**
  * Completely remove some format types
  */
-const FORMAT_EXCLUSIONS = [ 'core/text-color' ];
+const FORMAT_EXCLUSIONS = [ 'core/text-color', 'core/language' ];
 
 domReady( () => {
 	FORMAT_EXCLUSIONS.forEach( ( type ) => {
