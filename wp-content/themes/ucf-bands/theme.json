@@ -61,6 +61,8 @@
 					"gradient": "var(--ucf--gradient--dark-gray-overlay-to-right)"
 				}
 			],
+			"text": false,
+			"background": false,
 			"link": true
 		},
 		"typography": {
@@ -143,8 +145,6 @@
 			"wideSize": "var(--ucf--content-width--wide)"
 		},
 		"spacing": {
-			"margin": true,
-			"padding": true,
 			"blockGap": true,
 			"defaultSpacingSizes": false,
 			"spacingSizes": [
