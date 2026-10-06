@@ -12,27 +12,27 @@ $font-sizes: (
 	11px,
 	12px,
 	13px,
-	14px,
+	14px,	      // V3 h6
 	15px,
 	16px,
-	18px,
+	18px	16px, // V3 h5
 	20px,
 	24px,	      // FSE
 	26px	16px, // ??? FSE, cover "featured" paragraph + large pullquote
 	28px	20px, // V3 h4
 	32px	24px, // FSE, V3 h3
 	34px,	      // FSE
-	36px,	      // V3 entry title, large mobile
+	36px	24px, // V3 entry title, large mobile
 	38px,	      // FSE
 	45px,	      // FSE
-	46px	36px, // V3 large
+	46px	36px, // V3 large, h2
 	48px,	      // V3 xlarge mobile
 	52px,	      // FSE
 	56px,	      // FSE
 	58px,	      // FSE
-	62px	48px, // V3 xlarge
-	78px	48px, // V3 xxlarge
-	94px	48px, // V3 xxxlarge
+	62px	48px, // V3 xlarge, h1
+	78px	48px, // V3 xxlarge, banner-style cover h1
+	94px	48px, // V3 xxxlarge, jumbo-style cover h1
 	126px,
 );
 
@@ -52,7 +52,7 @@ $line-heights: (
 		// Fluid size.
 		@if $starting-size {
 			$fluid: fluid.fluid($starting-size, $size);
-			--ucf--font-size--#{"" + $size-clean}--fluid: #{$fluid};
+			--ucf--font-size--#{"" + $size-clean}-fluid: #{$fluid};
 		}
 	}
 }
