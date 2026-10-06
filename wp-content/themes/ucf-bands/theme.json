@@ -139,9 +139,24 @@
 					"size": "1.125rem"
 				},
 				{
-					"name": "Jumbo",
-					"slug": "jumbo",
-					"size": "7.875rem"
+					"name": "Medium (h4)",
+					"slug": "m",
+					"size": "var(--ucf--font-size--28-fluid)"
+				},
+				{
+					"name": "Medium-Large (h3)",
+					"slug": "ml",
+					"size": "var(--ucf--font-size--32-fluid)"
+				},
+				{
+					"name": "Large (h2)",
+					"slug": "l",
+					"size": "var(--ucf--font-size--46-fluid)"
+				},
+				{
+					"name": "XL (h1)",
+					"slug": "xl",
+					"size": "var(--ucf--font-size--62-fluid)"
 				}
 			],
 			"letterSpacing": false,
@@ -170,8 +185,7 @@
 		"blocks": {
 			"core/heading": {
 				"typography": {
-					"fontFamilies": [],
-					"fontSizes": []
+					"fontFamilies": []
 				}
 			},
 			"core/paragraph": {
@@ -201,7 +215,7 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|display",
 					"lineHeight": "0.875",
-					"fontSize": "var:preset|font-size|jumbo",
+					"fontSize": "var:preset|font-size|l",
 					"fontWeight": "400",
 					"textTransform": "uppercase"
 				}
