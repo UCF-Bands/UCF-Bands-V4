@@ -5,3 +5,5 @@
  */
 
 import './style.scss';
+
+import './rich-text';

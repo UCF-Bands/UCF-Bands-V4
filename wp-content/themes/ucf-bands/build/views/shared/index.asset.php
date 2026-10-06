@@ -1,6 +1,8 @@
 <?php return array(
 	'dependencies' => array(
-		
+		'wp-data',
+		'wp-dom-ready',
+		'wp-rich-text'
 	),
-	'version' => '918613767c3f1532cd90'
+	'version' => '3bfd6baed593b1941bc3'
 );
