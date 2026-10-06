@@ -37,10 +37,16 @@ $font-sizes: (
 );
 
 $line-heights: (
-
+	base: 1.6,
+	headline: 1.2,
+	display: 0.875
 );
 
 :root {
+
+	@each $name, $height in $line-heights {
+		--ucf--line-height--#{"" + $name}: #{$height};
+	}
 
 	@each $size, $starting-size in $font-sizes {
 		// Get size without unit.

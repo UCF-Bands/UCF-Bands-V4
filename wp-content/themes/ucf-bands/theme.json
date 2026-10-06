@@ -171,7 +171,7 @@
 	"styles": {
 		"typography": {
 			"fontFamily": "var:preset|font-family|body",
-			"lineHeight": "1.6",
+			"lineHeight": "var(--ucf--line-height--base)",
 			"fontSize": "var(--ucf--font-size--16)",
 			"fontWeight": "400"
 		},
@@ -180,13 +180,13 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|body-alt",
 					"fontWeight": "600",
-					"lineHeight": "1.2"
+					"lineHeight": "var(--ucf--line-height--headline)"
 				}
 			},
 			"h1": {
 				"typography": {
 					"fontFamily": "var:preset|font-family|display",
-					"lineHeight": "0.875",
+					"lineHeight": "var(--ucf--line-height--display)",
 					"fontSize": "var(--ucf--font-size--62-fluid)",
 					"fontWeight": "400",
 					"textTransform": "uppercase"
