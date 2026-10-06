@@ -132,33 +132,6 @@
 					]
 				}
 			],
-			"fontSizes": [
-				{
-					"name": "Base",
-					"slug": "base",
-					"size": "1.125rem"
-				},
-				{
-					"name": "Medium (h4)",
-					"slug": "m",
-					"size": "var(--ucf--font-size--28-fluid)"
-				},
-				{
-					"name": "Medium-Large (h3)",
-					"slug": "ml",
-					"size": "var(--ucf--font-size--32-fluid)"
-				},
-				{
-					"name": "Large (h2)",
-					"slug": "l",
-					"size": "var(--ucf--font-size--46-fluid)"
-				},
-				{
-					"name": "XL (h1)",
-					"slug": "xl",
-					"size": "var(--ucf--font-size--62-fluid)"
-				}
-			],
 			"letterSpacing": false,
 			"textTransform": false,
 			"textDecoration": false,
@@ -200,7 +173,7 @@
 		"typography": {
 			"fontFamily": "var:preset|font-family|body",
 			"lineHeight": "1.6",
-			"fontSize": "var:preset|font-size|base",
+			"fontSize": "var(--ucf--font-size--16)",
 			"fontWeight": "400"
 		},
 		"elements": {
@@ -215,9 +188,34 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|display",
 					"lineHeight": "0.875",
-					"fontSize": "var:preset|font-size|l",
+					"fontSize": "var(--ucf--font-size--62-fluid)",
 					"fontWeight": "400",
 					"textTransform": "uppercase"
+				}
+			},
+			"h2": {
+				"typography": {
+					"fontSize": "var(--ucf--font-size--46-fluid)"
+				}
+			},
+			"h3": {
+				"typography": {
+					"fontSize": "var(--ucf--font-size--32-fluid)"
+				}
+			},
+			"h4": {
+				"typography": {
+					"fontSize": "var(--ucf--font-size--28-fluid)"
+				}
+			},
+			"h5": {
+				"typography": {
+					"fontSize": "var(--ucf--font-size--18-fluid)"
+				}
+			},
+			"h6": {
+				"typography": {
+					"fontSize": "var(--ucf--font-size--14)"
 				}
 			}
 		},
