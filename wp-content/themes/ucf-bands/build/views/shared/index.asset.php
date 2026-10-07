@@ -2,7 +2,8 @@
 	'dependencies' => array(
 		'wp-data',
 		'wp-dom-ready',
+		'wp-hooks',
 		'wp-rich-text'
 	),
-	'version' => '33185dd88c18cb8bf821'
+	'version' => 'cb4789fc3c809ee07a9a'
 );
