@@ -6,17 +6,8 @@
 
 import { addFilter } from '@wordpress/hooks';
 
+// eslint-disable-next-line no-unused-vars
 const setRegistration = ( settings, name ) => {
-	// if ( 'core/paragraph' === name ) {
-		console.log( 'BLOCK TYPE', name, settings.supports );
-	// }
-
-	if ( settings.supports?.className ) {
-		console.log( 'IT SUPPORTS CLASSNAME' );
-		// THIS ISN'T WORKING
-		settings.supports.className = false;
-	}
-
 	return settings;
 };
 
