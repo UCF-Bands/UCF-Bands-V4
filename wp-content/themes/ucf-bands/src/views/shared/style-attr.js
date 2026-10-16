@@ -1,11 +1,21 @@
 /**
  * Add extra block data attributes for the background/color/etc style chosen.
  *
+ * Note: This only applies to "style" attributes in `attributes.style`, which do
+ * not have the `has-%whatever%` helper classnames. For example, background
+ * gradients will be handled here, but not background color because it's
+ * `attributes.backgroundColor` instead of `attributes.style.background.color`.
+ *
  * @since 4.0.0
  */
 
 import { createHigherOrderComponent } from '@wordpress/compose';
 import { addFilter } from '@wordpress/hooks';
+
+// Whitelisted inline "style attributes".
+const SUPPORTED_SCOPES = {
+	background: [ 'gradient' ],
+};
 
 /**
  * Create HTML data attributes from block style attributes.
@@ -17,7 +27,15 @@ import { addFilter } from '@wordpress/hooks';
 const parseStyleProps = ( props, attributes ) => {
 	if ( attributes?.style ) {
 		for ( const [ scope, style ] of Object.entries( attributes.style ) ) {
+			if ( ! SUPPORTED_SCOPES[ scope ] ) {
+				continue;
+			}
+
 			for ( const [ type, value ] of Object.entries( style ) ) {
+				if ( ! SUPPORTED_SCOPES[ scope ].includes( type ) ) {
+					continue;
+				}
+
 				const cleanValue = value.startsWith( 'var:' )
 					? value.split( '|' ).pop()
 					: value;
