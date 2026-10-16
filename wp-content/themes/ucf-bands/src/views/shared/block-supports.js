@@ -6,8 +6,11 @@
 
 import { addFilter } from '@wordpress/hooks';
 
-// eslint-disable-next-line no-unused-vars
-const setRegistration = ( settings, name ) => {
+const setRegistration = ( settings ) => {
+	if ( settings?.supports ) {
+		settings.supports.customCSS = false;
+	}
+
 	return settings;
 };
 
