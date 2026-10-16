@@ -1,9 +1,11 @@
 <?php return array(
 	'dependencies' => array(
+		'react-jsx-runtime',
+		'wp-compose',
 		'wp-data',
 		'wp-dom-ready',
 		'wp-hooks',
 		'wp-rich-text'
 	),
-	'version' => 'e6397eaed5f9d24cd949'
+	'version' => '9a128710c5bceaa64bdc'
 );

@@ -8,3 +8,4 @@ import './style.scss';
 
 import './rich-text';
 import './block-supports';
+import './style-attr';
