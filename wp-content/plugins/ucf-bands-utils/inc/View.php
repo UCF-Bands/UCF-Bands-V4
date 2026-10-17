@@ -242,16 +242,32 @@ trait View {
 
 		// Front end-only JS: Shared scope, non-editor.
 		if ( $shared_scope && ! $is_editor && file_exists( "{$build_dir}/view.js" ) ) {
-			wp_register_script(
-				$handle,
-				"{$build_url}/view.js",
-				$this->get_js_dependencies(),
-				$asset['version'],
-				[ 'in_footer' => true ]
-			);
+			$view_asset_path = "{$build_dir}/view.asset.php";
 
-			if ( ! $is_printed ) {
-				wp_enqueue_script( $handle );
+			if ( file_exists( $view_asset_path ) ) {
+				$view_asset = require $view_asset_path;
+
+				wp_register_script(
+					$handle,
+					"{$build_url}/view.js",
+					array_merge(
+						$view_asset['dependencies'],
+						$this->get_js_dependencies(),
+					),
+					$view_asset['version'],
+					[ 'in_footer' => true ]
+				);
+
+				if ( ! $is_printed ) {
+					wp_enqueue_script( $handle );
+				}
+
+			} else {
+				_doing_it_wrong(
+					__METHOD__,
+					wp_kses_post( "\"{$name}\" view doesn't have a @wordpress/scripts front-end view.js asset PHP file." ),
+					'ucf-bands'
+				);
 			}
 		}
 
