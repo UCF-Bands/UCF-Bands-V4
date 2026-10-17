@@ -5,6 +5,7 @@
  */
 
 import './style.scss';
+import './editor.scss';
 
 import './rich-text';
 import './block-supports';
