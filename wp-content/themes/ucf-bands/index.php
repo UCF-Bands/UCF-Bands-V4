@@ -8,8 +8,18 @@
 
 get_header();
 ?>
-	<main>
+	<main class="is-layout-constrained">
 		<?php d( 'Whatup dawg this is index.php' ); ?>
+		<?php
+		if ( have_posts() ) :
+			while ( have_posts() ) :
+				the_post();
+				the_content();
+			endwhile;
+
+			the_posts_navigation();
+		endif;
+		?>
 		<p>This is a paragraph.</p>
 	</main>
 <?php
