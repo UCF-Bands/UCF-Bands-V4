@@ -159,8 +159,13 @@ trait View {
 
 		add_action(
 			'enqueue_block_assets',
-			[ $this, 'enqueue_assets' ],
+			[ $this, 'enqueue_shared_assets' ],
 			$this->get_enqueue_scripts_priority()
+		);
+
+		add_action(
+			'enqueue_block_editor_assets',
+			[ $this, 'enqueue_editor_assets' ]
 		);
 
 		add_filter( 'style_loader_tag', [ $this, 'set_style_tag' ], 10, 4 );
@@ -179,11 +184,35 @@ trait View {
 	}
 
 	/**
-	 * Enqueue CSS and/or JS assets
+	 * Enqueue shared (front end + editor) assets
+	 *
+	 * Styles will be scoped to the front end and editor canvas/<iframe>.
 	 *
 	 * @since 1.0.0
 	 */
-	public function enqueue_assets(): void {
+	public function enqueue_shared_assets(): void {
+		$this->enqueue_assets( true );
+	}
+
+	/**
+	 * Enqueue editor-only assets
+	 *
+	 * Styles will be scoped to the editor areas, not the canvas/<iframe>.
+	 *
+	 * @since 1.0.0
+	 */
+	public function enqueue_editor_assets(): void {
+		$this->enqueue_assets();
+	}
+
+	/**
+	 * Enqueue CSS and/or JS assets
+	 *
+	 * @since 1.0.0
+	 *
+	 * @param bool $shared_scope  Scope is for front end or editor "canvas" (<iframe>).
+	 */
+	public function enqueue_assets( bool $shared_scope = false ): void {
 
 		$name       = self::get_view_name();
 		$is_printed = self::is_printed();
@@ -205,18 +234,18 @@ trait View {
 			);
 		}
 
+		$screen    = get_current_screen();
+		$is_editor = $screen && $screen->is_block_editor();
+
 		$asset  = require $asset_path;
 		$handle = self::get_handle();
 
-		// Check for JS.
-		if ( file_exists( "{$build_dir}/index.js" ) ) {
+		// Front end-only JS: Shared scope, non-editor.
+		if ( $shared_scope && ! $is_editor && file_exists( "{$build_dir}/view.js" ) ) {
 			wp_register_script(
 				$handle,
-				"{$build_url}/index.js",
-				array_merge(
-					$asset['dependencies'],
-					$this->get_js_dependencies()
-				),
+				"{$build_url}/view.js",
+				$this->get_js_dependencies(),
 				$asset['version'],
 				[ 'in_footer' => true ]
 			);
@@ -226,8 +255,19 @@ trait View {
 			}
 		}
 
-		// Check for front-end CSS (style.scss).
-		if ( file_exists( "{$build_dir}/style-index.css" ) ) {
+		// Editor-only JS: Non-shared scope, is editor.
+		if ( ! $shared_scope && $is_editor && file_exists( "{$build_dir}/index.js" ) ) {
+			wp_enqueue_script(
+				$handle,
+				"{$build_url}/index.js",
+				$asset['dependencies'],
+				$asset['version'],
+				[ 'in_footer' => true ]
+			);
+		}
+
+		// Shared CSS (style.scss): Shared scope.
+		if ( $shared_scope && file_exists( "{$build_dir}/style-index.css" ) ) {
 			wp_register_style(
 				$handle,
 				"{$build_url}/style-index.css",
@@ -246,6 +286,20 @@ trait View {
 			if ( ! $is_printed ) {
 				wp_enqueue_style( $handle );
 			}
+		}
+
+		// Editor-only CSS: Shared scope (canvas/<iframe>), is editor.
+		if ( $shared_scope && $is_editor && file_exists( "{$build_dir}/index.css" ) ) {
+			wp_enqueue_style(
+				"{$handle}-editor",
+				"{$build_url}/index.css",
+				array_filter(
+					[
+						wp_style_is( $handle ) ? $handle : null,
+					]
+				),
+				$asset['version']
+			);
 		}
 
 		$this->enqueue_extra_assets();
