@@ -234,11 +234,9 @@ trait View {
 			);
 		}
 
-		$screen    = get_current_screen();
-		$is_editor = $screen && $screen->is_block_editor();
-
-		$asset  = require $asset_path;
-		$handle = self::get_handle();
+		$is_editor = is_editor();
+		$asset     = require $asset_path;
+		$handle    = self::get_handle();
 
 		// Front end-only JS: Shared scope, non-editor.
 		if ( $shared_scope && ! $is_editor && file_exists( "{$build_dir}/view.js" ) ) {
