@@ -29,18 +29,6 @@ class Shared {
 	public const NAME = 'shared';
 
 	/**
-	 * Hook things in
-	 *
-	 * @since 4.0.0
-	 */
-	public function __construct() {
-		// We may not need this.
-		// phpcs:ignore Squiz.PHP.CommentedOutCode.Found
-		// add_action( 'after_setup_theme', [ $this, 'add_editor_styles' ] );.
-		$this->add_enqueue_hook();
-	}
-
-	/**
 	 * Get wp_enqueue_scripts hook priority.
 	 *
 	 * Elevated so gform_basic can potentially be enqueued.
@@ -119,22 +107,5 @@ class Shared {
 				'https://kit.fontawesome.com/bfd47f16db.js'
 			);
 		}
-	}
-
-	/**
-	 * Enqueue editor styles
-	 *
-	 * This is used instead of enqueue_block_assets because it gets us around
-	 * the annoying .editor-styles-wrapper CSS scoping issue.
-	 *
-	 * @since 4.0.0
-	 */
-	public function add_editor_styles(): void {
-
-		// This is automatic in block themes but required in our hybrid.
-		add_theme_support( 'editor-styles' );
-
-		add_editor_style( 'build/views/shared/index.css' );
-		add_editor_style( 'build/views/shared/style-index.css' );
 	}
 }
