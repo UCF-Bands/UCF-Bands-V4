@@ -255,3 +255,15 @@ function remove_filter_without_priority( string $hook, callable $callback ): boo
 		? false
 		: remove_filter( $hook, $callback, $priority );
 }
+
+/**
+ * Is the current request for the block editor?
+ *
+ * @since 1.0.0
+ *
+ * @return bool
+ */
+function is_editor(): bool {
+	$screen = get_current_screen();
+	return $screen && $screen->is_block_editor();
+}
