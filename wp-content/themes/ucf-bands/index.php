@@ -8,6 +8,9 @@
 
 get_header();
 ?>
-	<main><?php d( 'Whatup dawg this is index.php' ); ?></main>
+	<main>
+		<?php d( 'Whatup dawg this is index.php' ); ?>
+		<p>This is a paragraph.</p>
+	</main>
 <?php
 get_footer();
