@@ -19,7 +19,6 @@ get_header();
 			the_posts_navigation();
 		endif;
 		?>
-		<p>This is a paragraph.</p>
 	</main>
 <?php
 get_footer();
