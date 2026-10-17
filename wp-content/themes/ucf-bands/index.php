@@ -9,7 +9,6 @@
 get_header();
 ?>
 	<main class="is-layout-constrained">
-		<?php d( 'Whatup dawg this is index.php' ); ?>
 		<?php
 		if ( have_posts() ) :
 			while ( have_posts() ) :
