@@ -2,8 +2,12 @@
  * Editor-only shared/global styling
  */
 
-// Not working yet--not enough specificity
-.block-editor-block-list__layout.is-root-container > :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
-	margin-left: 0 !important;
-	margin-right: 0 !important;
+// Extra classname point is because we're trying to beat core's internal CSS.
+.block-editor-block-list__layout.block-editor-block-list__layout.is-root-container,
+.is-layout-constrained.is-layout-constrained {
+
+	> :where(:not(.alignleft):not(.alignright):not(.alignfull)) {
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
 }
