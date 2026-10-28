@@ -34,6 +34,7 @@ class Theme {
 	 * @since 4.0.0
 	 */
 	public function __construct() {
+		Block_Types::get_instance();
 		Editor::get_instance();
 		Shared::get_instance();
 	}
