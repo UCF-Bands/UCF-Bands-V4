@@ -1,0 +1,15 @@
+/**
+ * Content grid helpers/mixins
+ */
+
+@mixin grid {
+	display: grid;
+	grid-template-columns: var(--ucf--content-grid--template-columns);
+
+	// Place inner blocks in center column (wrap).
+	> * {
+		grid-column: 2;
+		margin-left: 0 !important;
+		margin-right: 0 !important;
+	}
+}

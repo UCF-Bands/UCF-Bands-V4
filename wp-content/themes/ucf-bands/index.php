@@ -8,7 +8,7 @@
 
 get_header();
 ?>
-	<main class="is-layout-constrained">
+	<main class="is-layout-constrained wp-block-post-content-is-layout-flow">
 		<?php
 		if ( have_posts() ) :
 			while ( have_posts() ) :
