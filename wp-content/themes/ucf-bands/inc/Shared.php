@@ -6,6 +6,8 @@
  * @package UCF\Theme
  */
 
+declare( strict_types = 1 );
+
 namespace UCF\Theme;
 
 use FortAwesome\FontAwesome;
