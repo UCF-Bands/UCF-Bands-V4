@@ -151,7 +151,7 @@
 				{
 					"name": "1 Unit",
 					"slug": "40",
-					"size": "2.125rem"
+					"size": "var(--ucf--spacing--one)"
 				}
 			]
 		},
@@ -219,7 +219,7 @@
 			}
 		},
 		"spacing": {
-			"blockGap": "2.125rem"
+			"blockGap": "var(--ucf--spacing--content)"
 		}
 	}
 }

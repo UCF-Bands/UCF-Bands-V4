@@ -1,0 +1,29 @@
+/**
+ * Global spacing units
+ */
+
+@use "sass:list";
+@use "../../utils/fluid-typography" as fluid;
+@use "../shared/typography" as typography;
+
+$base-spacing-unit: typography.base-font-size() * typography.base-line-height();
+
+$units: (
+	one				1,
+	two				1		2,
+	content			1		1.25,
+	content-copy	0.625,
+	content-wide	1.5		2.25,
+	content-full	1.5		3.75,
+);
+
+:root {
+	@each $label, $multiplier, $large-multiplier in $units {
+
+		@if $large-multiplier {
+			--ucf--spacing--#{$label}: #{fluid.fluid($base-spacing-unit * $multiplier, $base-spacing-unit * $large-multiplier)};
+		} @else {
+			--ucf--spacing--#{$label}: calc(#{$base-spacing-unit} * #{$multiplier});
+		}
+	}
+}
