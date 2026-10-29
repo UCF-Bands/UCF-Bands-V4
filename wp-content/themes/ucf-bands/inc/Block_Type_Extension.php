@@ -18,6 +18,14 @@ namespace UCF\Theme;
 class Block_Type_Extension {
 
 	/**
+	 * Scripts to enqueue on front end.
+	 *
+	 * @since 4.0.0
+	 * @var  array
+	 */
+	private $scripts = [];
+
+	/**
 	 * Scripts to enqueue in editor
 	 *
 	 * @since 4.0.0
@@ -35,6 +43,7 @@ class Block_Type_Extension {
 	public function __construct( private string $name ) {
 		add_filter( 'register_block_type_args', [ $this, 'add_assets' ], 10, 2 );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
+		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
 	}
 
 	/**
@@ -69,6 +78,19 @@ class Block_Type_Extension {
 		$asset  = require $asset_path;
 		$handle = Theme::HANDLE_PREFIX . 'block-' . str_replace( '/', '-', $this->name );
 
+		// Front end-only JS.
+		$view_asset_path = "{$build_dir}/view.asset.php";
+		if ( file_exists( $view_asset_path ) ) {
+			$view_asset = require $view_asset_path;
+
+			$this->scripts[ $this->name ] = [
+				$handle,
+				"{$build_url}/view.js",
+				$view_asset['dependencies'],
+				$view_asset['version']
+			];
+		}
+
 		// Editor-only JS. $args doesn't have a spot for this so we're saving it for enqueue_block_editor_assets.
 		if ( file_exists( "{$build_dir}/index.js" ) ) {
 			$this->editor_scripts[ $handle ] = [
@@ -86,6 +108,20 @@ class Block_Type_Extension {
 				[ 'wp-block-library' ], // Should this also have the specific block type? (see metro).
 			);
 			$extra_args['style_handles'] = [ $handle ];
+
+			// Add path to style data so it can potentially be inlined via wp_maybe_inline_styles().
+			wp_style_add_data( $handle, 'path', "{$build_dir}/style-index.css" );
+		}
+
+		// Editor-only CSS.
+		if ( file_exists( "{$build_dir}/index.css" ) ) {
+			wp_register_style(
+				"{$handle}-editor",
+				"{$build_url}/index.css",
+				[],
+				$asset['version']
+			);
+			$extra_args['editor_style_handles'] = [ "{$handle}-editor" ];
 		}
 
 		$args = array_merge_recursive( $args, $extra_args );
@@ -102,6 +138,21 @@ class Block_Type_Extension {
 
 		foreach ( $this->editor_scripts as $handle => $args ) {
 			wp_enqueue_script( $handle, $args[0], $args[1], $args[2], true );
+		}
+	}
+
+	/**
+	 * Enqueue front end assets
+	 *
+	 * @since 4.0.0
+	 */
+	public function enqueue_assets(): void {
+
+		foreach ( $this->scripts as $block_type => $args ) {
+
+			if ( has_block( $block_type ) ) {
+				wp_enqueue_script( $args[0], $args[1], $args[2], $args[3], true );
+			}
 		}
 	}
 }
