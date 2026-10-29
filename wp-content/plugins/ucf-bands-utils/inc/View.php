@@ -56,7 +56,8 @@ trait View {
 	 * @since 1.0.0
 	 */
 	protected function __construct() {
-		$this->add_enqueue_hook();
+		// pre_get_posts so $wp_current_screen is available.
+		add_action( 'pre_get_posts', [ $this, 'add_enqueue_hook' ] );
 	}
 
 	/**
@@ -153,14 +154,30 @@ trait View {
 	/**
 	 * Add enqueue_scripts hook
 	 *
+	 * We are using wp_enqueue_scripts instead of enqueue_block_assets for the
+	 * front end because it allows us to load after "global-styles" without
+	 * needing to set it as a dependency. WordPress wants to enqueue
+	 * global-styles in the footer since this is a non-"block theme", so
+	 * although setting global-styles as a conditional CSS dependency for a view
+	 * technically works, a _doing_it_wrong() is thrown.
+	 *
+	 * @see wp_enqueue_global_styles()
+	 *
 	 * @since 1.0.0
 	 */
-	protected function add_enqueue_hook(): void {
+	public function add_enqueue_hook(): void {
+		static $is_editor;
+
+		if ( ! isset( $is_editor ) ) {
+			$is_editor = is_editor();
+		}
 
 		add_action(
-			'enqueue_block_assets',
+			$is_editor
+				? 'enqueue_block_assets'
+				: 'wp_enqueue_scripts',
 			[ $this, 'enqueue_shared_assets' ],
-			$this->get_enqueue_scripts_priority()
+			$is_editor ? 10 : $this->get_enqueue_scripts_priority()
 		);
 
 		add_action(

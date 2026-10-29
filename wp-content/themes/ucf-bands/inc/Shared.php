@@ -13,7 +13,6 @@ namespace UCF\Theme;
 use FortAwesome\FontAwesome;
 
 use function FortAwesome\fa;
-use function UCF\Utils\is_editor;
 
 /**
  * Global CSS/JS handling
@@ -70,13 +69,8 @@ class Shared {
 	 * @return array
 	 */
 	protected function get_css_dependencies(): array {
-		$is_editor = is_editor();
-
 		return array_filter(
 			[
-				! $is_editor && has_action( 'wp_enqueue_scripts', 'wp_enqueue_global_styles' )
-					? 'global-styles'
-					: null,
 				wp_style_is( 'wp-block-library' ) ? 'wp-block-library' : null,
 				wp_style_is( 'gform_basic' ) ? 'gform_basic' : null,
 				wp_style_is( 'select2' ) ? 'select2' : null,
