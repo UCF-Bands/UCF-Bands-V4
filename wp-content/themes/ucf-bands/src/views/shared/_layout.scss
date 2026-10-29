@@ -24,7 +24,31 @@
 		column-gap: var(--ucf--content-grid--column-gap);
 	}
 
+	// Copy-based blocks with reduced spacing.
+	> .wp-block-paragraph + .wp-block-paragraph {
+		margin-block-start: var(--ucf--spacing--content-copy);
+	}
+
+	> .alignwide {
+		margin-block-start: var(--ucf--spacing--content-wide);
+		margin-block-end: var(--ucf--spacing--content-wide);
+
+		+ * {
+			margin-block-start: 0;
+		}
+
+		+ .alignfull {
+			margin-block-start: calc(var(--ucf--spacing--content-full) - var(--ucf--spacing--content-wide));
+		}
+	}
+
 	> .alignfull {
 		grid-column: 1 / -1;
+		margin-block-start: var(--ucf--spacing--content-full);
+		margin-block-end: var(--ucf--spacing--content-full);
+
+		+ * {
+			margin-block-start: 0;
+		}
 	}
 }
