@@ -25,7 +25,8 @@
 	}
 
 	// Copy-based blocks with reduced spacing.
-	> .wp-block-paragraph + .wp-block-paragraph {
+	> .wp-block-paragraph + .wp-block-paragraph,
+	> .wp-block-heading + .wp-block-paragraph {
 		margin-block-start: var(--ucf--spacing--content-copy);
 	}
 
