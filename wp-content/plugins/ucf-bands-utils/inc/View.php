@@ -225,7 +225,11 @@ trait View {
 	/**
 	 * Enqueue CSS and/or JS assets
 	 *
+	 * The expected files (index.asset.php, view.js, index.css, etc) are what
+	 * @wordpress/scripts produces by default.
+	 *
 	 * @since 1.0.0
+	 * @see   https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
 	 *
 	 * @param bool $shared_scope  Scope is for front end or editor "canvas" (<iframe>).
 	 */
