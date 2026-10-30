@@ -4,15 +4,8 @@
 
 @use "sass:list";
 @use "sass:math";
+@use "../../constants" as *;
 @use "../../utils/fluid-typography" as fluid;
-
-@function base-font-size() {
-	@return 16px;
-}
-
-@function base-line-height() {
-	@return 1.6;
-}
 
 $font-sizes: (
 	11px,
@@ -59,7 +52,7 @@ $line-heights: (
 		$size-clean: math.div($size, ($size * 0 + 1));
 
 		// "Static" size.
-		--ucf--font-size--#{"" + $size-clean}: #{math.div($size, base-font-size())}rem;
+		--ucf--font-size--#{"" + $size-clean}: #{math.div($size, $base-font-size)}rem;
 
 		// Fluid size.
 		@if $starting-size {

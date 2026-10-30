@@ -4,9 +4,9 @@
 
 @use "sass:list";
 @use "../../utils/fluid-typography" as fluid;
-@use "../shared/typography" as typography;
+@use "../../constants" as *;
 
-$base-spacing-unit: typography.base-font-size() * typography.base-line-height();
+$base-spacing-unit: $base-font-size * $base-line-height;
 
 $units: (
 	one				1,
