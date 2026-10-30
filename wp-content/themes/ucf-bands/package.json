@@ -16,6 +16,7 @@
 		"email": "jpak@jordanpak.com"
 	},
 	"devDependencies": {
+		"@wordpress/blocks": "^17.0.0",
 		"@wordpress/dom-ready": "^4.56.0",
 		"@wordpress/rich-text": "^7.56.0",
 		"@wordpress/scripts": "^36.0.0",
