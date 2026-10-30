@@ -178,7 +178,7 @@ trait View {
 		static $is_editor;
 
 		if ( ! isset( $is_editor ) ) {
-			$is_editor = is_customize_preview() ? false : is_editor();
+			$is_editor = is_editor();
 		}
 
 		add_action(

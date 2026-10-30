@@ -264,6 +264,6 @@ function remove_filter_without_priority( string $hook, callable $callback ): boo
  * @return bool
  */
 function is_editor(): bool {
-	$screen = get_current_screen();
+	$screen = function_exists( 'get_current_screen' ) ? get_current_screen() : false;
 	return $screen && $screen->is_block_editor();
 }
