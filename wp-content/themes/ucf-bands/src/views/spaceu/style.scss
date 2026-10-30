@@ -1,0 +1,33 @@
+/**
+ * SpaceU theming
+ */
+
+@use "sass:list";
+
+// Color palette.
+$colors: (
+	gold-dark-vibrant: #e69f07,
+	gold-dark:         #eca908,
+	gold-mid:          #f5b212,
+	gold:              #4c9bd2,
+	gold-highlight:    #5a9bc9,
+);
+
+:root {
+
+	@each $name, $value in $colors {
+		--ucf--color--#{"" + $name}: #{$value};
+	}
+}
+
+// Gradients.
+$gradients: (
+	gold: linear-gradient(90deg, var(--ucf--color--gold) 0%, #2976ab 100%),
+);
+
+:root {
+
+	@each $name, $value in $gradients {
+		--ucf--gradient--#{"" + $name}: #{$value};
+	}
+}

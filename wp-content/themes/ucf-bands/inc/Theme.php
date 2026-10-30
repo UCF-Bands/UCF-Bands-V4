@@ -29,6 +29,14 @@ class Theme {
 	const HANDLE_PREFIX = 'ucf-theme-';
 
 	/**
+	 * Customizer setting/control prefix
+	 *
+	 * @since 4.0.0
+	 * @var   string
+	 */
+	const CUSTOMIZER_PREFIX = 'ucf_';
+
+	/**
 	 * Set things up
 	 *
 	 * @since 4.0.0
@@ -37,5 +45,6 @@ class Theme {
 		Block_Types::get_instance();
 		Editor::get_instance();
 		Shared::get_instance();
+		SpaceU::get_instance();
 	}
 }
