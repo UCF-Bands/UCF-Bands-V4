@@ -1,0 +1,15 @@
+/**
+ * Dark section/"theme" handling
+ */
+
+[data-ucf-background-gradient="dark-gray"] {
+	color: var(--ucf--color--gray);
+
+	.wp-block-heading {
+		color: var(--ucf--color--white);
+	}
+}
+
+[data-ucf-background-gradient="gold"] {
+	text-shadow: 1px 1px 0 var(--ucf--color--gold-highlight);
+}
