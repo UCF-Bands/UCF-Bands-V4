@@ -28,6 +28,7 @@ class Block_Types {
 	 */
 	private const EXTENSIONS = [
 		'core/cover',
+		'core/paragraph',
 	];
 
 	/**
