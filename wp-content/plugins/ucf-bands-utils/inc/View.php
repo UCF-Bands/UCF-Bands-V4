@@ -235,7 +235,7 @@ trait View {
 	 * Enqueue CSS and/or JS assets
 	 *
 	 * The expected files (index.asset.php, view.js, index.css, etc) are what
-	 * @wordpress/scripts produces by default.
+	 * `@wordpress/scripts` produces by default.
 	 *
 	 * @since 1.0.0
 	 * @see   https://developer.wordpress.org/block-editor/reference-guides/packages/packages-scripts/
@@ -289,7 +289,6 @@ trait View {
 				if ( ! $is_printed ) {
 					wp_enqueue_script( $handle );
 				}
-
 			} else {
 				_doing_it_wrong(
 					__METHOD__,
