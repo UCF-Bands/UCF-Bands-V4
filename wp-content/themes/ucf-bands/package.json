@@ -33,5 +33,8 @@
 		"packages-update": "wp-scripts packages-update",
 		"start": "wp-scripts start",
 		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"dependencies": {
+		"@10up/block-components": "^1.23.0"
 	}
 }
