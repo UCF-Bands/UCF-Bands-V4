@@ -1,0 +1,1 @@
+:is(h1,h2,h3).wp-block-heading:not(:where(.has-display-font-family,.is-style-ucf-no-accent,[data-ucf-background-gradient=gold] *))::after{content:"";display:block;width:42px;height:4px;margin-top:var(--ucf--spacing--third);background:var(--ucf--color--gold)}
