@@ -58,7 +58,16 @@ trait View {
 	protected function __construct() {
 		// pre_get_posts so $wp_current_screen is available.
 		add_action( 'pre_get_posts', [ $this, 'add_enqueue_hook' ] );
+
+		$this->do_additional_setup();
 	}
+
+	/**
+	 * Perform additional setup actions
+	 *
+	 * @since 1.0.0
+	 */
+	protected function do_additional_setup(): void {}
 
 	/**
 	 * Is the current request for the view?
