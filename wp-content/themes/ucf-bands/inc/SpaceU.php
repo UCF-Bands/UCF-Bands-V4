@@ -79,7 +79,7 @@ class SpaceU {
 		$wp_customize->add_section(
 			self::CUSTOMIZER_PREFIX,
 			[
-				'title' => __( 'SpaceU', 'ucf' ),
+				'title'    => __( 'SpaceU', 'ucf' ),
 				'priority' => 20,
 			]
 		);

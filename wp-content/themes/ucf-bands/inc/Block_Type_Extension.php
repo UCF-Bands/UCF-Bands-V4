@@ -87,7 +87,7 @@ class Block_Type_Extension {
 				$handle,
 				"{$build_url}/view.js",
 				$view_asset['dependencies'],
-				$view_asset['version']
+				$view_asset['version'],
 			];
 		}
 
@@ -96,7 +96,7 @@ class Block_Type_Extension {
 			$this->editor_scripts[ $handle ] = [
 				"{$build_url}/index.js",
 				$asset['dependencies'],
-				$asset['version']
+				$asset['version'],
 			];
 		}
 
@@ -106,6 +106,7 @@ class Block_Type_Extension {
 				$handle,
 				"{$build_url}/style-index.css",
 				[ 'wp-block-library' ], // Should this also have the specific block type? (see metro).
+				$asset['version']
 			);
 			$extra_args['style_handles'] = [ $handle ];
 
