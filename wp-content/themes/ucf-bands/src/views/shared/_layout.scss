@@ -52,3 +52,16 @@
 		}
 	}
 }
+
+.alignwide.has-background {
+	padding: var(--ucf--spacing--content-wide);
+}
+
+.alignfull.has-background {
+	padding-top: var(--ucf--spacing--content-full);
+	padding-bottom: var(--ucf--spacing--content-full);
+
+	&:has(+ &) {
+		margin-block-end: 0;
+	}
+}
