@@ -12,6 +12,8 @@
 	--ucf--content-grid--column-gap: 5%; // Adds up to 10% for an affective 90% middle column width.
 }
 
+$media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
+
 // Convert "constrained" and "flow" layouts to grid.
 .is-layout-flow,
 .is-layout-constrained {
@@ -44,11 +46,30 @@
 
 	> .alignfull {
 		grid-column: 1 / -1;
-		margin-block-start: var(--ucf--spacing--content-full);
-		margin-block-end: var(--ucf--spacing--content-full);
+
+		// Add increased top/bottom margin if not first or last child with "background".
+		&:where(:not(:is(#{$media-classnames}):first-child)) {
+			margin-block-start: var(--ucf--spacing--content-full);
+		}
+
+		&:where(:not(:is(#{$media-classnames}):last-child)) {
+			margin-block-end: var(--ucf--spacing--content-full);
+		}
 
 		+ * {
 			margin-block-start: 0;
+		}
+	}
+
+	// Add spacing before/after the first/last block in main content container.
+	&.wp-block-post-content-is-layout-flow {
+
+		> *:first-child:where(:not(:is(#{$media-classnames}).alignfull)) {
+			margin-block-start: var(--ucf--spacing--content-full);
+		}
+
+		> *:last-child:where(:not(:is(#{$media-classnames}).alignfull)) {
+			margin-block-end: var(--ucf--spacing--content-full);
 		}
 	}
 }
