@@ -31,19 +31,23 @@ $media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
 		margin-block-start: var(--ucf--spacing--content-copy);
 	}
 
+	// Add slightly more spacing around wide blocks.
 	> .alignwide {
 		margin-block-start: var(--ucf--spacing--content-wide);
 		margin-block-end: var(--ucf--spacing--content-wide);
 
+		// Remove double-space between adjacent wide blocks.
 		+ * {
 			margin-block-start: 0;
 		}
 
+		// "Defer" bottom spacing to following full block's top margin.
 		+ .alignfull {
 			margin-block-start: calc(var(--ucf--spacing--content-full) - var(--ucf--spacing--content-wide));
 		}
 	}
 
+	// Span full-aligned blocks across all columns + add substantial spacing.
 	> .alignfull {
 		grid-column: 1 / -1;
 
@@ -56,12 +60,14 @@ $media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
 			margin-block-end: var(--ucf--spacing--content-full);
 		}
 
+		// Remove double-spacing between adjacent full blocks.
 		+ * {
 			margin-block-start: 0;
 		}
 	}
 
-	// Add spacing before/after the first/last block in main content container.
+	// Add spacing before/after the first/last block in main content container
+	// (unless it's a full-width "media" block).
 	&.wp-block-post-content-is-layout-flow {
 
 		> *:first-child:where(:not(:is(#{$media-classnames}).alignfull)) {
