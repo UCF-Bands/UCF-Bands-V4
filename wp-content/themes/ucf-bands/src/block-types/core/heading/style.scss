@@ -2,7 +2,7 @@
  * Core heading block
  */
 
-:is(h1, h2, h3).wp-block-heading {
+:is(h2, h3).wp-block-heading {
 
 	// Accent bar.
 	&:not(:where(.has-display-font-family, .is-style-ucf-no-accent, [data-ucf-background-gradient="gold"] *))::after {
@@ -11,6 +11,7 @@
 		width: 42px;
 		height: 4px;
 		margin-top: var(--ucf--spacing--third);
+		margin-bottom: var(--ucf--spacing--fifth);
 		background: var(--ucf--color--gold);
 	}
 }

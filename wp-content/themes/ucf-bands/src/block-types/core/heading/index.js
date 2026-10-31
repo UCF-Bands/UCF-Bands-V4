@@ -18,7 +18,7 @@ const STYLE_DISPLAY = 'display';
 
 domReady( () => {
 	registerStyle( BLOCK_NAME, 'no-accent', __( 'No Accent', 'ucf' ) );
-	registerStyle( BLOCK_NAME, STYLE_DISPLAY, __( 'Display', 'ucf' ) );
+	registerStyle( BLOCK_NAME, STYLE_DISPLAY, __( 'Condensed', 'ucf' ) );
 } );
 
 const classNameGenerator = ( { className } ) => {
