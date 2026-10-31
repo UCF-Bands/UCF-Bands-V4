@@ -2,6 +2,11 @@
  * Core heading block
  */
 
+.wp-block-heading :is(b, strong) {
+	font-weight: 400;
+	color: var(--ucf--color--gold);
+}
+
 :is(h2, h3).wp-block-heading {
 
 	// Accent bar.
@@ -13,5 +18,24 @@
 		margin-top: var(--ucf--spacing--third);
 		margin-bottom: var(--ucf--spacing--fifth);
 		background: var(--ucf--color--gold);
+	}
+}
+
+$family-level-sizes: (
+	display: (
+		2: 62,
+		3: 46,
+		4: 36,
+		5: 28,
+		6: 28
+	),
+);
+
+@each $family, $levels in $family-level-sizes {
+
+	@each $level, $size in $levels {
+		h#{$level}.has-#{$family}-font-family {
+			font-size: var(--ucf--font-size--#{$size}-fluid);
+		}
 	}
 }
