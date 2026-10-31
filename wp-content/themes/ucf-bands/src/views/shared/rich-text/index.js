@@ -34,7 +34,6 @@ domReady( () => {
 
 // Mapping: formatType: [ 'ns/blockType1', 'ns/blockType2', … ].
 const FORMAT_BLOCK_TYPE_EXCLUSIONS = {
-	'core/bold': [ 'core/heading' ],
 	'core/italic': [ 'core/heading' ],
 };
 
