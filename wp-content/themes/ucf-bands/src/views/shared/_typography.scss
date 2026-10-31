@@ -65,5 +65,15 @@ $line-heights: (
 // Augment in properties that aren't compatible with @font-face.
 .has-display-font-family {
 	text-transform: uppercase;
-	font-weight: 400;
+	line-height: var(--ucf--line-height--display);
+
+	&,
+	b,
+	strong {
+		font-weight: 400;
+	}
+
+	strong {
+		color: var(--ucf--color--gold);
+	}
 }
