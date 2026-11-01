@@ -87,11 +87,16 @@ $media-classnames-list: implode.classname-list($media-classnames);
 	padding: var(--ucf--spacing--content-wide);
 }
 
-.alignfull.has-background {
-	padding-top: var(--ucf--spacing--content-full);
-	padding-bottom: var(--ucf--spacing--content-full);
+.alignfull {
 
-	&:has(+ &) {
-		margin-block-end: 0;
+	&.has-background {
+		padding-top: var(--ucf--spacing--content-full);
+		padding-bottom: var(--ucf--spacing--content-full);
+	}
+
+	@each $classname in $media-classnames {
+		&:has(+ .#{$classname}.alignfull) {
+			margin-block-end: 0;
+		}
 	}
 }
