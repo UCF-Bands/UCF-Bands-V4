@@ -217,6 +217,7 @@ class Extension {
 						continue;
 					}
 
+					// Make the font family available to the block type.
 					$data['settings']['blocks'][ $this->name ]['typography']['fontFamilies']['theme'][]
 						= $theme_fonts[ $family ];
 				}
