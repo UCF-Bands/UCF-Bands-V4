@@ -195,7 +195,7 @@ class Extension {
 
 		$data = $theme_json->get_data();
 
-		// Set font families.
+		// Enable font families.
 		if ( $this->font_families ) {
 
 			// Get font familes registered via JSON.
