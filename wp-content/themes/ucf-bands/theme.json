@@ -73,11 +73,11 @@
 			"fontFamilies": [
 				{
 					"fontFamily": "\"Open Sans\", sans-serif",
-					"name": "Open Sans",
+					"name": "Body (Open Sans)",
 					"slug": "body",
 					"fontFace": [
 						{
-							"fontFamily": "Open Sans",
+							"fontFamily": "Body: Open Sans",
 							"fontStyle": "auto",
 							"fontWeight": "400 700",
 							"src": [ "file:./src/fonts/opensans-variable.ttf" ]
@@ -92,7 +92,7 @@
 				},
 				{
 					"fontFamily": "\"Montserrat\", sans-serif",
-					"name": "Montserrat",
+					"name": "Heading (Montserrat)",
 					"slug": "body-alt",
 					"fontFace": [
 						{
@@ -104,7 +104,7 @@
 				},
 				{
 					"fontFamily": "\"League Gothic\", sans-serif",
-					"name": "League Gothic",
+					"name": "Condensed (League Gothic)",
 					"slug": "display",
 					"fontFace": [
 						{
@@ -116,7 +116,7 @@
 				},
 				{
 					"fontFamily": "\"Droid Serif\", serif",
-					"name": "Droid Serif",
+					"name": "Serif (Droid Serif)",
 					"slug": "serif",
 					"fontFace": [
 						{
