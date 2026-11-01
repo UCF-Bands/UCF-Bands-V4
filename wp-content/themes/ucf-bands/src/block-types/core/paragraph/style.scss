@@ -2,10 +2,19 @@
  * Core paragraph
  */
 
+@use "../../../views/shared/typography" as typography;
+
 .wp-block-paragraph {
 	font-size: var(--ucf--font-size--18);
-}
 
-.is-style-ucf-detail {
-	font-size: var(--ucf--font-size--16-fluid);
+	&.is-style-ucf-detail {
+		font-size: var(--ucf--font-size--16-fluid);
+	}
+
+	&.is-style-ucf-featured {
+
+		@include typography.serif-family();
+
+		font-size: var(--ucf--font-size--22);
+	}
 }

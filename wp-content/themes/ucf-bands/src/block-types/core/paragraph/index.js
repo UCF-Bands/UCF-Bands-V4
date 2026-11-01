@@ -15,4 +15,5 @@ const BLOCK_NAME = 'core/paragraph';
 
 domReady( () => {
 	registerStyle( BLOCK_NAME, 'detail', __( 'Small / Detail', 'ucf' ) );
+	registerStyle( BLOCK_NAME, 'featured', __( 'Featured', 'ucf' ) );
 } );

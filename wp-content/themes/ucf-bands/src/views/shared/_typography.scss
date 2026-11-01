@@ -16,6 +16,7 @@ $font-sizes: (
 	16px	14px,
 	18px	16px, // V3 h5
 	20px,
+	22px,
 	24px,	      // FSE
 	26px	16px, // ??? FSE, cover "featured" paragraph + large pullquote
 	28px	20px, // V3 h4
@@ -62,8 +63,12 @@ $line-heights: (
 	}
 }
 
-// Augment in properties that aren't compatible with @font-face.
-.has-display-font-family {
+@mixin font-smoothing {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+@mixin display-family {
 	text-transform: uppercase;
 	line-height: var(--ucf--line-height--display);
 
@@ -76,4 +81,22 @@ $line-heights: (
 	strong {
 		color: var(--ucf--color--gold);
 	}
+}
+
+// Augment in properties that aren't compatible with @font-face.
+.has-display-font-family {
+
+	@include display-family();
+}
+
+@mixin serif-family {
+	font-family: var(--wp--preset--font-family--serif);
+	font-style: italic;
+
+	@include font-smoothing();
+}
+
+.has-serif-font-family {
+
+	@include serif-family();
 }

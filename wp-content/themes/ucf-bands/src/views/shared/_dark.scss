@@ -8,6 +8,10 @@
 	.wp-block-heading {
 		color: var(--ucf--color--white);
 	}
+
+	.wp-block-paragraph.is-style-ucf-featured {
+		color: var(--ucf--color--gray-lighter);
+	}
 }
 
 [data-ucf-background-gradient="gold"] {
