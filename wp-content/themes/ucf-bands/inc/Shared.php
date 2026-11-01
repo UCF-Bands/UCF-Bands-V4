@@ -106,7 +106,7 @@ class Shared {
 			// phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion, WordPress.WP.EnqueuedResourceParameters.NotInFooter
 			wp_enqueue_script(
 				Theme::HANDLE_PREFIX . 'font-awesome',
-				'https://kit.fontawesome.com/bfd47f16db.js'
+				'https://kit.fontawesome.com/c259465af1.js'
 			);
 		}
 	}
