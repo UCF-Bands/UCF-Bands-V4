@@ -83,10 +83,13 @@ $media-classnames-list: implode.classname-list($media-classnames);
 	}
 }
 
+// Add default padding to wide blocks with background.
 .alignwide.has-background {
 	padding: var(--ucf--spacing--content-wide);
 }
 
+// Add default padding to full-width blocks with backround + handle spacing
+// between them.
 .alignfull {
 
 	&.has-background {
