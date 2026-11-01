@@ -31,11 +31,13 @@
 		"lint:js": "wp-scripts lint-js './*.js' 'src/**/*.js'",
 		"lint:md:docs": "wp-scripts lint-md-docs",
 		"lint:pkg-json": "wp-scripts lint-pkg-json",
-		"packages-update": "wp-scripts packages-update",
+		"update:packages": "wp-scripts packages-update",
+		"update:font-awesome": "npm update '@awesome.me/kit-c259465af1'",
 		"start": "wp-scripts start",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@10up/block-components": "^1.23.0"
+		"@10up/block-components": "^1.23.0",
+		"@awesome.me/kit-c259465af1": "^1.0.2"
 	}
 }
