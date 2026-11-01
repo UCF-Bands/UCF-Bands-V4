@@ -2,6 +2,8 @@
  * Global layout
  */
 
+@use "sass:list";
+@use "../../utils/implode";
 @use "./content-grid";
 
 :root {
@@ -12,7 +14,8 @@
 	--ucf--content-grid--column-gap: 5%; // Adds up to 10% for an affective 90% middle column width.
 }
 
-$media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
+$media-classnames: ( has-background, wp-block-image, wp-block-cover );
+$media-classnames-list: implode.classname-list($media-classnames);
 
 // Convert "constrained" and "flow" layouts to grid.
 .is-layout-flow,
@@ -52,11 +55,11 @@ $media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
 		grid-column: 1 / -1;
 
 		// Add increased top/bottom margin if not first or last child with "background".
-		&:where(:not(:is(#{$media-classnames}):first-child)) {
+		&:where(:not(:is(#{$media-classnames-list}):first-child)) {
 			margin-block-start: var(--ucf--spacing--content-full);
 		}
 
-		&:where(:not(:is(#{$media-classnames}):last-child)) {
+		&:where(:not(:is(#{$media-classnames-list}):last-child)) {
 			margin-block-end: var(--ucf--spacing--content-full);
 		}
 
@@ -70,11 +73,11 @@ $media-classnames: '.has-background, .wp-block-image, .wp-block-cover';
 	// (unless it's a full-width "media" block).
 	&.wp-block-post-content-is-layout-flow {
 
-		> *:first-child:where(:not(:is(#{$media-classnames}).alignfull)) {
+		> *:first-child:where(:not(:is(#{$media-classnames-list}).alignfull)) {
 			margin-block-start: var(--ucf--spacing--content-full);
 		}
 
-		> *:last-child:where(:not(:is(#{$media-classnames}).alignfull)) {
+		> *:last-child:where(:not(:is(#{$media-classnames-list}).alignfull)) {
 			margin-block-end: var(--ucf--spacing--content-full);
 		}
 	}
