@@ -8,14 +8,25 @@
 
 declare( strict_types = 1 );
 
-namespace UCF\Theme;
+namespace UCF\Theme\Block_Types;
+
+use WP_Theme_JSON_Data;
+use UCF\Theme\Theme;
 
 /**
  * Adjustment + additional assets manager for external block type
  *
  * @since 4.0.0
  */
-class Block_Type_Extension {
+class Extension {
+
+	/**
+	 * Block type name
+	 *
+	 * @since 4.0.0
+	 * @var   string
+	 */
+	protected string $name;
 
 	/**
 	 * Scripts to enqueue on front end.
@@ -23,7 +34,7 @@ class Block_Type_Extension {
 	 * @since 4.0.0
 	 * @var  array
 	 */
-	private $scripts = [];
+	private array $scripts = [];
 
 	/**
 	 * Scripts to enqueue in editor
@@ -34,16 +45,30 @@ class Block_Type_Extension {
 	private $editor_scripts = [];
 
 	/**
+	 * Font families (slugs) to enable in typography panel
+	 *
+	 * @since 4.0.0
+	 * @var   string[]
+	 */
+	protected array $font_families = [];
+
+	/**
 	 * Set things up
 	 *
 	 * @since 4.0.0
 	 *
 	 * @param string $name  Block type name.
 	 */
-	public function __construct( private string $name ) {
+	public function __construct( string $name = '' ) {
+		$this->name = $name ?: $this->name;
+
 		add_filter( 'register_block_type_args', [ $this, 'add_assets' ], 10, 2 );
 		add_action( 'enqueue_block_editor_assets', [ $this, 'enqueue_editor_assets' ] );
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_assets' ] );
+
+		if ( $this->font_families ) {
+			add_filter( 'wp_theme_json_data_theme', [ $this, 'set_theme_json' ] );
+		}
 	}
 
 	/**
@@ -155,5 +180,50 @@ class Block_Type_Extension {
 				wp_enqueue_script( $args[0], $args[1], $args[2], $args[3], true );
 			}
 		}
+	}
+
+	/**
+	 * Make theme.json adjustments for block type
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param  WP_Theme_JSON_Data $theme_json  theme.json data.
+	 * @return WP_Theme_JSON_Data $theme_json  Adjusted theme.json data.
+	 */
+	public function set_theme_json( WP_Theme_JSON_Data $theme_json ) {
+		static $font_families;
+
+		$data = $theme_json->get_data();
+
+		// Set font families.
+		if ( $this->font_families ) {
+
+			// Get font familes registered via JSON.
+			if ( ! isset( $font_families ) ) {
+				$font_families = $data['settings']['typography']['fontFamilies']['theme'] ?? [];
+				$font_families = $font_families ? array_column( $font_families, null, 'slug' ) : [];
+			}
+
+			if ( $font_families ) {
+				foreach ( $this->font_families as $family ) {
+
+					// Sanity-check block type's family support.
+					if ( ! array_key_exists( $family, $font_families ) ) {
+						_doing_it_wrong(
+							__METHOD__,
+							wp_kses_post( "\"{$this->name}\" block type extension is trying to enable un-registered \"{$family}\" font family." ),
+							'ucf-bands'
+						);
+						continue;
+					}
+
+					$data['settings']['blocks'][ $this->name ]['typography']['fontFamilies']['theme'][]
+						= $font_families[ $family ];
+				}
+			}
+		}
+
+		$theme_json->update_with( $data );
+		return $theme_json;
 	}
 }

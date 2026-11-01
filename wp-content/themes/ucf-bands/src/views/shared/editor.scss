@@ -4,6 +4,15 @@
 
 @use "./content-grid";
 
+// Show better previews in font dropdown.
+.block-editor-font-family-control .components-custom-select-control__item {
+
+	&[style*="League Gothic"] {
+		text-transform: uppercase;
+		font-size: 1.25rem;
+	}
+}
+
 // Apply custom grid/alignments to title block.
 .edit-post-visual-editor__post-title-wrapper {
 

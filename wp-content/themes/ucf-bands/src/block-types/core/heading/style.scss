@@ -10,14 +10,30 @@
 :is(h2, h3).wp-block-heading {
 
 	// Accent bar.
-	&:not(:where(.has-display-font-family, .is-style-ucf-no-accent, [data-ucf-background-gradient="gold"] *))::after {
-		content: "";
-		display: block;
-		width: 42px;
-		height: 4px;
-		margin-top: var(--ucf--spacing--third);
-		margin-bottom: var(--ucf--spacing--fifth);
-		background: var(--ucf--color--gold);
+	&:not(:where(.is-style-ucf-no-accent, [data-ucf-background-gradient="gold"] *)) {
+
+		&::after {
+			content: "";
+			display: block;
+			width: 42px;
+			height: 4px;
+			margin-top: var(--ucf--spacing--third);
+			margin-bottom: var(--ucf--spacing--fifth);
+			background: var(--ucf--color--gold);
+		}
+
+		&.has-text-align-center::after {
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		&.has-text-align-right::after {
+			margin-left: auto;
+		}
+
+		&.has-display-font-family::after {
+			margin-top: var(--ucf--spacing--third-half);
+		}
 	}
 }
 
@@ -38,4 +54,9 @@ $family-level-sizes: (
 			font-size: var(--ucf--font-size--#{$size}-fluid);
 		}
 	}
+}
+
+h1:is(.has-body-font-family, .has-body-alt-font-family) {
+	font-size: var(--ucf--font-size--78-fluid);
+	text-transform: none;
 }

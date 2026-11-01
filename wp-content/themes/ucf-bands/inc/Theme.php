@@ -10,6 +10,7 @@ declare( strict_types = 1 );
 
 namespace UCF\Theme;
 
+use UCF\Theme\Block_Types\Block_Types;
 use UCF\Utils\Singleton;
 
 /**
