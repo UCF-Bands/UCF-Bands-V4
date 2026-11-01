@@ -1,27 +1,8 @@
 <?php return array(
 	'dependencies' => array(
-		'react',
-		'react-dom',
-		'react-jsx-runtime',
-		'wp-api-fetch',
-		'wp-block-editor',
 		'wp-blocks',
-		'wp-components',
-		'wp-compose',
-		'wp-core-data',
-		'wp-data',
-		'wp-date',
-		'wp-deprecated',
-		'wp-dom',
 		'wp-dom-ready',
-		'wp-editor',
-		'wp-element',
-		'wp-hooks',
-		'wp-html-entities',
-		'wp-i18n',
-		'wp-primitives',
-		'wp-rich-text',
-		'wp-url'
+		'wp-i18n'
 	),
-	'version' => 'c056aa4d4d1688cc0933'
+	'version' => '4aa1662fa4981b236228'
 );
