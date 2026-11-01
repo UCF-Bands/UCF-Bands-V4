@@ -191,7 +191,7 @@ class Extension {
 	 * @return WP_Theme_JSON_Data $theme_json  Adjusted theme.json data.
 	 */
 	public function set_theme_json( WP_Theme_JSON_Data $theme_json ) {
-		static $font_families;
+		static $theme_fonts;
 
 		$data = $theme_json->get_data();
 
@@ -199,16 +199,16 @@ class Extension {
 		if ( $this->font_families ) {
 
 			// Get font familes registered via JSON.
-			if ( ! isset( $font_families ) ) {
-				$font_families = $data['settings']['typography']['fontFamilies']['theme'] ?? [];
-				$font_families = $font_families ? array_column( $font_families, null, 'slug' ) : [];
+			if ( ! isset( $theme_fonts ) ) {
+				$theme_fonts = $data['settings']['typography']['fontFamilies']['theme'] ?? [];
+				$theme_fonts = $theme_fonts ? array_column( $theme_fonts, null, 'slug' ) : [];
 			}
 
-			if ( $font_families ) {
+			if ( $theme_fonts ) {
 				foreach ( $this->font_families as $family ) {
 
 					// Sanity-check block type's family support.
-					if ( ! array_key_exists( $family, $font_families ) ) {
+					if ( ! array_key_exists( $family, $theme_fonts ) ) {
 						_doing_it_wrong(
 							__METHOD__,
 							wp_kses_post( "\"{$this->name}\" block type extension is trying to enable un-registered \"{$family}\" font family." ),
@@ -218,7 +218,7 @@ class Extension {
 					}
 
 					$data['settings']['blocks'][ $this->name ]['typography']['fontFamilies']['theme'][]
-						= $font_families[ $family ];
+						= $theme_fonts[ $family ];
 				}
 			}
 		}
