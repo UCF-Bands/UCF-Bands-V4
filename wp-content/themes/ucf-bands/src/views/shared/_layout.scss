@@ -54,7 +54,8 @@ $media-classnames-list: implode.classname-list($media-classnames);
 	> .alignfull {
 		grid-column: 1 / -1;
 
-		// Add increased top/bottom margin if not first or last child with "background".
+		// Add increased top/bottom margin if not first or last child with
+		// "background".
 		&:where(:not(:is(#{$media-classnames-list}):first-child)) {
 			margin-block-start: var(--ucf--spacing--content-full);
 		}
