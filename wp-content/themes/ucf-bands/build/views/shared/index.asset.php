@@ -7,5 +7,5 @@
 		'wp-hooks',
 		'wp-rich-text'
 	),
-	'version' => '623fac5a74a701c29af1'
+	'version' => '41f10c7a0fcd26e4253c'
 );

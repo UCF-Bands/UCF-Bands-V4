@@ -98,9 +98,8 @@ $media-classnames-list: implode.classname-list($media-classnames);
 		padding-bottom: var(--ucf--spacing--content-full);
 	}
 
-	@each $classname in $media-classnames {
-		&:has(+ .#{$classname}.alignfull) {
-			margin-block-end: 0;
-		}
+	// + .has-background.alignfull, + .wp-block-image.alignfull, etc.
+	&:has(+ .#{implode.implode($media-classnames, '.alignfull, + .')}.alignfull) {
+		margin-block-end: 0;
 	}
 }
