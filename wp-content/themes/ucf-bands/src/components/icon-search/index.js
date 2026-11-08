@@ -22,17 +22,35 @@ const loadIcons = () =>
 		...new Set( modules.flatMap( ( m ) => Object.values( m ) ) ),
 	] );
 
-let iconsPromise;
+// Module-level cache shared by every <IconSearch> instance.
+let cachedIcons = null;
+let iconsPromise = null;
+
+const getIcons = () => {
+	iconsPromise ??= loadIcons().then(
+		( icons ) => ( cachedIcons = icons ),
+		( error ) => {
+			// Allow a retry on the next mount if the import fails.
+			iconsPromise = null;
+			throw error;
+		}
+	);
+	return iconsPromise;
+};
 
 const IconSearch = ( { onChange } ) => {
-	const [ icons, setIcons ] = useState( null );
+	const [ icons, setIcons ] = useState( cachedIcons );
 	const [ search, setSearch ] = useState( '' );
 
 	useEffect( () => {
-		if ( ! icons ) {
-			iconsPromise ??= loadIcons();
-			iconsPromise.then( setIcons );
+		if ( icons ) {
+			return;
 		}
+		let isMounted = true;
+		getIcons().then( ( loaded ) => isMounted && setIcons( loaded ) );
+		return () => {
+			isMounted = false;
+		};
 	}, [ icons ] );
 
 	const results = useMemo( () => {
