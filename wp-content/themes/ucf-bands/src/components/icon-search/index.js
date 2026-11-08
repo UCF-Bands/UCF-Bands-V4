@@ -38,7 +38,7 @@ const getIcons = () => {
 	return iconsPromise;
 };
 
-const IconSearch = ( { onChange } ) => {
+const IconSearch = ( { onChange, showLabel = false } ) => {
 	const [ icons, setIcons ] = useState( cachedIcons );
 	const [ search, setSearch ] = useState( '' );
 
@@ -74,7 +74,7 @@ const IconSearch = ( { onChange } ) => {
 		<>
 			<SearchControl
 				label={ __( 'Icon', 'nba' ) }
-				hideLabelFromVision={ false }
+				hideLabelFromVision={ ! showLabel }
 				value={ search }
 				onChange={ setSearch }
 			/>
@@ -88,7 +88,10 @@ const IconSearch = ( { onChange } ) => {
 							// showTooltip // TODO: Add a user meta-based "mode" toggle!
 							value={ icon.iconName }
 							onClick={ () =>
-								onChange( [ icon.prefix, icon.iconName ] )
+								onChange( {
+									prefix: icon.prefix,
+									name: icon.iconName,
+								} )
 							}
 						>
 							<FontAwesomeIcon icon={ icon } size="lg" />
