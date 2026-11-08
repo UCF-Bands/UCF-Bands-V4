@@ -25,17 +25,15 @@ const loadIcons = () =>
 let iconsPromise;
 
 const IconSearch = ( { onChange } ) => {
-	const [ isOpen, setIsOpen ] = useState( false );
 	const [ icons, setIcons ] = useState( null );
 	const [ search, setSearch ] = useState( '' );
 
 	useEffect( () => {
 		if ( ! icons ) {
-		// if ( isOpen && ! icons ) {
 			iconsPromise ??= loadIcons();
 			iconsPromise.then( setIcons );
 		}
-	}, [ isOpen, icons ] );
+	}, [ icons ] );
 
 	const results = useMemo( () => {
 		if ( ! icons ) {
