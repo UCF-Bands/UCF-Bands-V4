@@ -24,7 +24,7 @@ const loadIcons = () =>
 
 let iconsPromise;
 
-const IconSearch = () => {
+const IconSearch = ( { onChange } ) => {
 	const [ isOpen, setIsOpen ] = useState( false );
 	const [ icons, setIcons ] = useState( null );
 	const [ search, setSearch ] = useState( '' );
@@ -71,7 +71,9 @@ const IconSearch = () => {
 							label={ icon.iconName }
 							// showTooltip // TODO: Add a user meta-based "mode" toggle!
 							value={ icon.iconName }
-							onClick={ ( v ) => console.log( 'BRO', v ) }
+							onClick={ () =>
+								onChange( [ icon.prefix, icon.iconName ] )
+							}
 						>
 							<FontAwesomeIcon icon={ icon } size="lg" />
 							<span className="ucf--icon-search__result-label">
