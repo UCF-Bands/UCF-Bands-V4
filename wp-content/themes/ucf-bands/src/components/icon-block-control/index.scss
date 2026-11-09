@@ -1,0 +1,8 @@
+/**
+ * Icon block control
+ */
+
+.ucf--icon-block-control__popover {
+	// Keep it from being undersized when there's a search term but no results.
+	min-height: 40px;
+}

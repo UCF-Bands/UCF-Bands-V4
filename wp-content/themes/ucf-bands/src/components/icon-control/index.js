@@ -56,7 +56,7 @@ const IconControl = ( { onChange, prefixValue, nameValue } ) => {
 					icon={ closeIcon }
 					isDestructive
 				>
-					{ __( 'Reset', 'ucf' ) }
+					{ __( 'Clear', 'ucf' ) }
 				</Button>
 			</HStack>
 		</BaseControl>

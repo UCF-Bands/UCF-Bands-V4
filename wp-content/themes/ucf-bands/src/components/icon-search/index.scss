@@ -2,11 +2,17 @@
  * Icon search
  */
 
+
+.ucf--icon-search__control {
+	// Mostly just for the <Popover> for <IconBlockControl>.
+	min-width: 220px;
+}
+
 .ucf--icon-search__results {
 	max-height: 400px;
 	overflow-y: scroll;
 
-	.components-search-control + & {
+	.block-editor-block-inspector .components-search-control + & {
 		margin-top: -0.5rem;
 	}
 }

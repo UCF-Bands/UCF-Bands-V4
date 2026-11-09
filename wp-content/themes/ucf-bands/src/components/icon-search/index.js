@@ -73,6 +73,7 @@ const IconSearch = ( { onChange, showLabel = false } ) => {
 	return (
 		<>
 			<SearchControl
+				className="ucf--icon-search__control"
 				label={ __( 'Icon', 'nba' ) }
 				hideLabelFromVision={ ! showLabel }
 				value={ search }
