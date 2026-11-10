@@ -10,6 +10,7 @@ declare( strict_types = 1 );
 
 namespace UCF\Theme;
 
+use UCF\Theme\Block_Supports\Block_Supports;
 use UCF\Theme\Block_Types\Block_Types;
 use UCF\Utils\Singleton;
 
@@ -44,6 +45,7 @@ class Theme {
 	 */
 	public function __construct() {
 		Block_Types::get_instance();
+		Block_Supports::get_instance();
 		Editor::get_instance();
 		Shared::get_instance();
 		SpaceU::get_instance();
