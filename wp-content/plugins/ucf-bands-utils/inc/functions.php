@@ -122,6 +122,25 @@ function postval( string $key ) {
 }
 
 /**
+ * Convert dash-separated string to camelcase
+ *
+ * @since 1.0.0
+ *
+ * @param  string $string  Dash-separated string.
+ * @return string          Camel-cased string.
+ */
+function get_camel_case( string $string ): string {
+
+	$string = str_replace(
+		' ',
+		'',
+		ucwords( str_replace( '-', ' ', $string ) )
+	);
+
+	return lcfirst( $string );
+}
+
+/**
  * Break array into string of attributes
  *
  * @since 1.0.0
