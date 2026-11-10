@@ -25,7 +25,7 @@ trait View {
 	 * @return string
 	 */
 	protected static function get_handle_prefix(): string {
-		return Theme::HANDLE_PREFIX;
+		return Theme::HANDLE_PREFIX . 'view-';
 	}
 
 	/**

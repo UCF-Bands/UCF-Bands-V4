@@ -27,7 +27,7 @@ trait View {
 	 * @return string
 	 */
 	protected static function get_handle_prefix(): string {
-		return 'ucf-';
+		return 'ucf-view-';
 	}
 
 	/**
@@ -48,6 +48,49 @@ trait View {
 	 */
 	protected static function get_build_url(): string {
 		return UCF_UTILS_URL . '/build';
+	}
+
+	/**
+	 * Get view name
+	 *
+	 * It should line up with an asset in ./build/views/%name%.
+	 *
+	 * @since 1.0.0
+	 *
+	 * @return string
+	 */
+	protected static function get_view_name(): string {
+		return '';
+	}
+
+	/**
+	 * Get asset build sub-directory path
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	protected static function get_build_sub_dir(): string {
+		return 'views';
+	}
+
+	/**
+	 * Get asset build directory
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	protected static function get_asset_build_dir(): string {
+		return implode( '/', [ self::get_build_dir(), self::get_build_sub_dir(), self::get_view_name() ] );
+	}
+
+	/**
+	 * Get asset build URL
+	 *
+	 * @since  1.0.0
+	 * @return string
+	 */
+	protected static function get_asset_build_url(): string {
+		return implode( '/', [ self::get_build_url(), self::get_build_sub_dir(), self::get_view_name() ] );
 	}
 
 	/**
@@ -78,19 +121,6 @@ trait View {
 	 */
 	protected function is_view(): bool {
 		return false;
-	}
-
-	/**
-	 * Get view name
-	 *
-	 * It should line up with an asset in ./build/views/%name%.
-	 *
-	 * @since 1.0.0
-	 *
-	 * @return string
-	 */
-	protected static function get_view_name(): string {
-		return '';
 	}
 
 	/**
@@ -205,7 +235,7 @@ trait View {
 	public static function get_handle(): string {
 
 		return static::get_view_name()
-			? self::get_handle_prefix() . 'view-' . static::get_view_name()
+			? self::get_handle_prefix() . static::get_view_name()
 			: '';
 	}
 
@@ -252,8 +282,8 @@ trait View {
 			return;
 		}
 
-		$build_dir  = self::get_build_dir() . "/views/{$name}";
-		$build_url  = self::get_build_url() . "/views/{$name}";
+		$build_dir = self::get_asset_build_dir();
+		$build_url = self::get_asset_build_url();
 		$asset_path = "{$build_dir}/index.asset.php";
 
 		if ( ! file_exists( $asset_path ) ) {
@@ -400,7 +430,7 @@ trait View {
 			);
 		}
 
-		$handle = self::get_handle_prefix() . 'view-' . static::get_view_name();
+		$handle = self::get_handle_prefix() . static::get_view_name();
 
 		wp_print_styles( $handle );
 		wp_print_scripts( $handle );
