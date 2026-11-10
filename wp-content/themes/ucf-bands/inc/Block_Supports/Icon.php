@@ -45,7 +45,20 @@ class Icon {
 	 *
 	 * @see example: wp_register_aria_label_support()
 	 */
-	protected function do_attribute_registration( WP_Block_Type $block_type ): void {}
+	protected function do_attribute_registration( WP_Block_Type $block_type ): void {
+
+		if ( ! array_key_exists( 'ucfIconPrefix', $block_type->attributes ) ) {
+			$block_type->attributes['ucfIconPrefix'] = [
+				'type' => 'string',
+			];
+		}
+
+		if ( ! array_key_exists( 'ucfIconName', $block_type->attributes ) ) {
+			$block_type->attributes['ucfIconName'] = [
+				'type' => 'string',
+			];
+		}
+	}
 
 	/**
 	 * Get HTML attributes to apply to block
