@@ -24,10 +24,28 @@ class Block_Types {
 	 * Custom block types
 	 *
 	 * @since 4.0.0
-	 * @var   array
+	 * @var   string[]
 	 */
 	private const CUSTOM_TYPES = [
 		'icon',
+	];
+
+	/**
+	 * Core block type whitelist
+	 *
+	 * @since 4.0.0
+	 * @var   string[]
+	 */
+	private const CORE_TYPES = [
+		'button',
+		'buttons',
+		'cover',
+		'column',
+		'columns',
+		'group',
+		'heading',
+		'image',
+		'paragraph',
 	];
 
 	/**
@@ -44,6 +62,7 @@ class Block_Types {
 		new Heading();
 
 		add_action( 'init', [ $this, 'do_registration' ] );
+		add_filter( 'allowed_block_types_all', [ $this, 'set_allowed' ] );
 		add_filter( 'register_block_type_args', [ $this, 'set_block_type_args' ] );
 	}
 
@@ -57,6 +76,28 @@ class Block_Types {
 		foreach ( self::CUSTOM_TYPES as $type ) {
 			register_block_type( UCF_THEME_DIR . "/build/block-types/{$type}" );
 		}
+	}
+
+	/**
+	 * Set allowed block types
+	 *
+	 * @since 4.0.0
+	 *
+	 * @param  bool|array $block_types  Allowed block types.
+	 * @return string[]
+	 */
+	public function set_allowed( bool|array $block_types ): array {
+		$block_types = [];
+
+		foreach ( self::CORE_TYPES as $type ) {
+			$block_types[] = "core/{$type}";
+		}
+
+		foreach ( self::CUSTOM_TYPES as $type ) {
+			$block_types[] = "ucf/{$type}";
+		}
+
+		return $block_types;
 	}
 
 	/**
