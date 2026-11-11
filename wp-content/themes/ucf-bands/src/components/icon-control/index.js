@@ -17,8 +17,8 @@ import { __ } from '@wordpress/i18n';
 import { close as closeIcon } from '@wordpress/icons';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { byPrefixAndName } from '@awesome.me/kit-c259465af1/icons';
 
+import { useIcon } from '../../utils/icons';
 import IconSearch from '../icon-search';
 
 /**
@@ -40,14 +40,12 @@ const IconControl = ( { onChange, prefixValue, nameValue } ) => {
 	const { baseControlProps } = useBaseControlProps( {
 		label: __( 'Icon', 'ucf' ),
 	} );
+	const icon = useIcon( prefixValue, nameValue );
 
 	return prefixValue && nameValue ? (
 		<BaseControl { ...baseControlProps }>
 			<HStack justify="flex-start">
-				<FontAwesomeIcon
-					icon={ byPrefixAndName[ prefixValue ][ nameValue ] }
-					size="xl"
-				/>
+				{ icon && <FontAwesomeIcon icon={ icon } size="xl" /> }
 				<span>{ nameValue }</span>
 				<Spacer />
 				<Button

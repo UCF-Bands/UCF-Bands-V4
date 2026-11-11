@@ -6,52 +6,18 @@
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Button, SearchControl } from '@wordpress/components';
-import { useState, useEffect, useMemo } from '@wordpress/element';
+import { useState, useMemo } from '@wordpress/element';
 import { __ } from '@wordpress/i18n';
+
+import { useIcons } from '../../utils/icons';
 
 import './index.scss';
 
 const MAX_RESULTS = 120;
 
-const loadIcons = () =>
-	Promise.all( [
-		import( '@awesome.me/kit-c259465af1/icons/sharp/regular' ),
-		import( '@awesome.me/kit-c259465af1/icons/classic/brands' ),
-	] ).then( ( modules ) => [
-		// Set removes aliased exports (e.g. faAdd/faPlus) that reference the same icon object.
-		...new Set( modules.flatMap( ( m ) => Object.values( m ) ) ),
-	] );
-
-// Module-level cache shared by every <IconSearch> instance.
-let cachedIcons = null;
-let iconsPromise = null;
-
-const getIcons = () => {
-	iconsPromise ??= loadIcons().then(
-		( icons ) => ( cachedIcons = icons ),
-		( error ) => {
-			// Allow a retry on the next mount if the import fails.
-			iconsPromise = null;
-			throw error;
-		}
-	);
-	return iconsPromise;
-};
-
 const IconSearch = ( { onChange, showLabel = false } ) => {
-	const [ icons, setIcons ] = useState( cachedIcons );
+	const icons = useIcons();
 	const [ search, setSearch ] = useState( '' );
-
-	useEffect( () => {
-		if ( icons ) {
-			return;
-		}
-		let isMounted = true;
-		getIcons().then( ( loaded ) => isMounted && setIcons( loaded ) );
-		return () => {
-			isMounted = false;
-		};
-	}, [ icons ] );
 
 	const results = useMemo( () => {
 		if ( ! icons ) {

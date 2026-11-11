@@ -6,13 +6,13 @@
 
 import { useState } from '@wordpress/element';
 
-import { byPrefixAndName } from '@awesome.me/kit-c259465af1/icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-import { Button, Popover } from '@wordpress/components';
+import { Button, Popover, Spinner } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
 import { close as closeIcon } from '@wordpress/icons';
 
+import { useIcon } from '../../utils/icons';
 import IconSearch from '../icon-search';
 
 import './index.scss';
@@ -23,6 +23,10 @@ const InlineIconPicker = ( { prefix, name, onChange } ) => {
 	const [ isOpen, setIsOpen ] = useState( false );
 	const [ anchor, setAnchor ] = useState( null );
 
+	const selectedIcon = useIcon( prefix, name );
+	const placeholderIcon = useIcon( 'fasr', 'circle-question' );
+	const icon = ( isSet && selectedIcon ) || placeholderIcon;
+
 	return (
 		<>
 			<Button
@@ -30,14 +34,11 @@ const InlineIconPicker = ( { prefix, name, onChange } ) => {
 				onClick={ setIsOpen }
 				ref={ setAnchor }
 			>
-				<FontAwesomeIcon
-					icon={
-						isSet
-							? byPrefixAndName[ prefix ][ name ]
-							: byPrefixAndName.fasr[ 'circle-question' ]
-					}
-					size="xl"
-				/>
+				{ icon ? (
+					<FontAwesomeIcon icon={ icon } size="xl" />
+				) : (
+					<Spinner />
+				) }
 			</Button>
 			{ isOpen && (
 				<Popover
