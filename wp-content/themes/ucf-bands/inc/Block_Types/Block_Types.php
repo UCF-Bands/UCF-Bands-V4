@@ -21,19 +21,42 @@ class Block_Types {
 	use Singleton;
 
 	/**
+	 * Custom block types
+	 *
+	 * @since 4.0.0
+	 * @var   array
+	 */
+	private const CUSTOM_TYPES = [
+		'icon',
+	];
+
+	/**
 	 * Set things up
 	 *
 	 * @since 4.0.0
 	 */
 	public function __construct() {
 
-		// Register custom block types and block type extensions.
+		// Set up block type extensions.
 		new Extension( 'core/cover' );
 		new Extension( 'core/heading' );
 		new Extension( 'core/paragraph' );
 		new Heading();
 
+		add_action( 'init', [ $this, 'do_registration' ] );
 		add_filter( 'register_block_type_args', [ $this, 'set_block_type_args' ] );
+	}
+
+	/**
+	 * Register block types
+	 *
+	 * @since 4.0.0
+	 */
+	public function do_registration(): void {
+
+		foreach ( self::CUSTOM_TYPES as $type ) {
+			register_block_type( UCF_THEME_DIR . "/build/block-types/{$type}" );
+		}
 	}
 
 	/**
