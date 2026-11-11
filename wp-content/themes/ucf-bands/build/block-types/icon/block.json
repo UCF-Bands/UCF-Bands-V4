@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "ucf/icon",
+  "title": "Icon",
+  "category": "design",
+  "description": "Display a Font Awesome icon.",
+  "keywords": [
+    "icon",
+    "font awesome"
+  ],
+  "version": "1.0.0",
+  "textdomain": "ucf",
+  "attributes": {},
+  "supports": {
+    "ucfIcon": true,
+    "dimensions": {
+      "width": true
+    }
+  },
+  "style": "file:./style-index.css",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css"
+}
