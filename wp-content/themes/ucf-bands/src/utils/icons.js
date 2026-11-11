@@ -16,6 +16,11 @@ let cachedIcons = null;
 let cachedLookup = null;
 let iconsPromise = null;
 
+/**
+ * Dynamically import the kit's icon modules and flatten them into a list.
+ *
+ * @return {Promise<Object[]>} Unique icon definitions from every imported module.
+ */
 const loadIcons = () =>
 	Promise.all( [
 		import(
@@ -33,6 +38,13 @@ const loadIcons = () =>
 		),
 	] );
 
+/**
+ * Build a `prefix` → `name`/`alias` → icon lookup (like the kit's `byPrefixAndName`).
+ *
+ * @param {Object[]} icons Icon definitions.
+ *
+ * @return {Object} Icons keyed by prefix, then by name and each string alias.
+ */
 const buildLookup = ( icons ) => {
 	const lookup = {};
 	icons.forEach( ( icon ) => {
