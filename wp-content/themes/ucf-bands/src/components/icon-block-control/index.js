@@ -25,7 +25,6 @@ const IconBlockControl = ( { onChange, prefixValue, nameValue } ) => {
 				<ToolbarGroup>
 					<ToolbarButton
 						className="ucf--icon-block-control__button"
-						isPressed={ ! isSet && isOpen }
 						onClick={ () =>
 							isSet
 								? onChange( { name: '', prefix: '' } )
@@ -43,8 +42,8 @@ const IconBlockControl = ( { onChange, prefixValue, nameValue } ) => {
 				<Popover
 					className="ucf--icon-block-control__popover"
 					anchor={ anchor }
-					// style={ { minHeight: '40px' } }
 					offset={ { mainAxis: 6, crossAxis: -4 } }
+					onFocusOutside={ () => setIsOpen( false ) }
 				>
 					<IconSearch
 						onChange={ ( value ) => {
