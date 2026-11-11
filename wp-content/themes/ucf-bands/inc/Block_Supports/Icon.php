@@ -59,17 +59,4 @@ class Icon {
 			];
 		}
 	}
-
-	/**
-	 * Get HTML attributes to apply to block
-	 *
-	 * @since 4.0.0
-	 *
-	 * @param  WP_Block_Type $block_type        Block type.
-	 * @param  array         $block_attributes  Block attributes.
-	 * @return array
-	 */
-	protected function get_attributes_to_apply( WP_Block_Type $block_type, array $block_attributes ): array {
-		return [];
-	}
 }
